@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D 腰薦椎模型</title>
+</head>
+<body>
+
+<style>
+:root{--stage:#c9cdd2;color-scheme:light}
+html{background:#e4e4e4}
+body{margin:0;padding-block:12px 24px;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px));background:#e4e4e4;color:#000;font-family:"PMingLiU","新細明體","MingLiU","細明體","Times New Roman",serif;font-size:13px;line-height:1.5}
+#page{max-width:1180px;margin:0 auto;background:#fff;border:1px solid #808080}
+#banner{background:#1f3a60;color:#fff;padding:10px 14px 8px;border-bottom:3px solid #b8860b}
+#banner h1{margin:0;font-family:"Times New Roman","PMingLiU","新細明體",serif;font-size:24px;font-weight:bold;letter-spacing:1px}
+#banner .sub{margin:4px 0 0;font-size:12px;color:#dfe6ee}
+table.layout{width:100%;border-collapse:collapse}
+table.layout td{vertical-align:top;padding:10px}
+td.viewer{border-right:1px solid #b0b0b0}
+td.sidebar{width:320px;background:#f4f4f0}
+.toolbar{background:#ece9d8;border:1px solid #808080;border-bottom:none;padding:3px 4px;display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.toolbar .tl{font-size:12px;margin-right:4px}
+.toolbar button{font-family:inherit;font-size:12px;padding:1px 8px}
+.stage{position:relative;height:640px;border:2px inset #a0a0a0;background:var(--stage);overflow:hidden}
+.stage canvas{display:block;width:100%;height:100%;touch-action:none}
+.status{background:#ece9d8;border:1px solid #808080;border-top:none;padding:2px 6px;font-size:12px;color:#333}
+.tip{position:absolute;pointer-events:none;background:#ffffe1;color:#000;border:1px solid #000;padding:0 4px;font-size:12px;white-space:nowrap}
+#err{color:#c00;font-weight:bold;position:absolute;left:12px;right:12px;bottom:12px;margin:0;background:#fff;border:1px solid #c00;padding:4px}
+fieldset{border:2px groove #d0d0d0;margin:0 0 10px;padding:6px 8px 8px;background:#fff}
+legend{font-weight:bold;font-size:13px;padding:0 4px;color:#1f3a60}
+#info .grp{font-size:12px;color:#555;margin:0 0 2px}
+#info h2{margin:0 0 6px;font-size:16px;font-family:"Times New Roman","PMingLiU",serif;border-bottom:1px dotted #808080;padding-bottom:3px}
+#info table{border-collapse:collapse;width:100%;font-size:13px}
+#info th{background:#e8e8e8;border:1px solid #b0b0b0;font-weight:normal;text-align:left;vertical-align:top;padding:3px 4px;width:4.8em;white-space:nowrap}
+#info td{border:1px solid #b0b0b0;padding:3px 5px;vertical-align:top}
+ul.ly{list-style:none;margin:0;padding:0}
+ul.ly li{margin:1px 0}
+ul.ly label{cursor:pointer}
+.sw{display:inline-block;width:10px;height:10px;border:1px solid #000;vertical-align:middle;margin:0 4px 0 2px}
+select{font-family:inherit;font-size:13px}
+.note{font-size:12px;color:#444;margin:6px 0 0}
+.sc button{font-family:inherit;font-size:12px;margin:0 2px 4px 0;padding:1px 6px}
+.sc button[aria-pressed="true"]{font-weight:bold;border-style:inset;color:#900}
+.scnote{font-size:12px;color:#900;margin-top:4px;min-height:1em}
+#footer{border-top:1px solid #808080;background:#f0f0f0;padding:6px 14px;font-size:12px;color:#333}
+@media (max-width:820px){
+  table.layout,table.layout tbody,table.layout tr,table.layout td{display:block;width:auto}
+  td.viewer{border-right:none;border-bottom:1px solid #b0b0b0}
+  .stage{height:70vh;min-height:380px}
+}
+</style>
+<div id="page">
+  <div id="banner">
+    <h1>3D 腰薦椎模型</h1>
+  </div>
+
+  <table class="layout"><tr>
+    <td class="viewer">
+      <div class="toolbar">
+        <button type="button" data-view="oblique">斜後方</button>
+        <button type="button" data-view="front">前面</button>
+        <button type="button" data-view="side">側面</button>
+        <button type="button" data-view="back">後面</button>
+        <button type="button" data-view="top">由上往下</button>
+      </div>
+      <div class="stage" id="stage">
+        <div class="tip" id="tip" hidden></div>
+        <p id="err" hidden></p>
+      </div>
+      <div class="status">左右拖曳旋轉 / 右鍵平移 / 滾輪縮放</div>
+    </td>
+
+    <td class="sidebar">
+      <fieldset id="info" aria-live="polite">
+        <legend>說明</legend>
+        <div class="grp" id="ig">點選模型中的任何構造</div>
+        <h2 id="in">L4 神經根</h2>
+        <table>
+          <tr><th>位置說明</th><td id="if"></td></tr>
+          <tr><th>壞掉時</th><td id="ix"></td></tr>
+        </table>
+      </fieldset>
+
+      <fieldset>
+        <legend>圖層</legend>
+        <ul class="ly">
+          <li><label><input type="checkbox" id="ly-bone" checked><span class="sw" style="background:#d9c290"></span>骨頭</label></li>
+          <li><label><input type="checkbox" id="ly-ghost"><span class="sw" style="background:#efe4c8"></span>骨頭半透明</label></li>
+          <li><label><input type="checkbox" id="ly-disc" checked><span class="sw" style="background:#8fb8de"></span>椎間盤</label></li>
+          <li><label><input type="checkbox" id="ly-lig" checked><span class="sw" style="background:#c0533a"></span>韌帶</label></li>
+          <li><label><input type="checkbox" id="ly-neural" checked><span class="sw" style="background:#7fbf8f"></span>硬膜囊 / 脊髓</label></li>
+          <li><label><input type="checkbox" id="ly-root" checked><span class="sw" style="background:#2f9e55"></span>神經根 / DRG</label></li>
+          <li><label><input type="checkbox" id="ly-psoas"><span class="sw" style="background:#dda39b"></span>髂腰肌</label></li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>軸切面 (像看 MRI 軸切)</legend>
+        <select id="cut" aria-label="軸切面層級">
+          <option value="off">不切</option>
+          <option value="L3-4">L3-4 椎間盤</option>
+          <option value="L4p">L4 椎弓根</option>
+          <option value="L4-5">L4-5 椎間盤</option>
+          <option value="L5p">L5 椎弓根</option>
+          <option value="L5-S1">L5-S1 椎間盤</option>
+        </select>
+        <p class="note">切掉該層以上的部分; 配合「由上往下」視角, 就是講義總覽圖的立體版。</p>
+      </fieldset>
+
+      <fieldset class="sc">
+        <legend>情境</legend>
+        <button type="button" data-sc="a">L4-5 後外側 (zone 1)</button>
+        <button type="button" data-sc="b">L4-5 極外側 (zone 3)</button>
+        <button type="button" data-sc="c">L5-S1 極外側 (zone 3)</button>
+        <button type="button" data-sc="d">L4-5 中央狹窄</button>
+        <div class="scnote" id="scnote"></div>
+      </fieldset>
+    </td>
+  </tr></table>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const stage=document.getElementById('stage');
+if(!window.THREE||!THREE.OrbitControls){const e=document.getElementById('err');e.hidden=false;e.textContent='3D 函式庫載入失敗, 請重新整理頁面。';return;}
+
+/* geometry helpers: build in straight coords, then bend into lordosis */
+const LEV=['L1','L2','L3','L4','L5'];
+const yc=i=>7-i*3.5;
+const f=s=>1.2-0.018*s*s, th=s=>Math.atan(-0.036*s);
+function bendXYZ(x,y,z){const t=th(y);return [x,y-z*Math.sin(t),f(y)+z*Math.cos(t)];}
+function bend(g){g=g.index?g.toNonIndexed():g;const p=g.attributes.position;for(let i=0;i<p.count;i++){const r=bendXYZ(p.getX(i),p.getY(i),p.getZ(i));p.setXYZ(i,r[0],r[1],r[2]);}g.computeVertexNormals();return g;}
+const V3=(x,y,z)=>{const r=bendXYZ(x,y,z);return new THREE.Vector3(r[0],r[1],r[2]);};
+function box(w,h,d,x,y,z,ry=0,rx=0,seg=2){const g=new THREE.BoxGeometry(w,h,d,2,seg,2);if(rx)g.rotateX(rx);if(ry)g.rotateY(ry);g.translate(x,y,z);return g;}
+function cyl(r,h,x,y,z,sx=1,axis='y',ry=0,seg=3){const g=new THREE.CylinderGeometry(r,r,h,36,seg);if(sx!==1)g.scale(sx,1,1);if(axis==='z')g.rotateX(Math.PI/2);if(ry)g.rotateY(ry);g.translate(x,y,z);return g;}
+function tube(pts,r,seg=80){const c=new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(p[0],p[1],p[2])));return new THREE.TubeGeometry(c,seg,r,14,false);}
+
+const scene=new THREE.Scene();
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.localClippingEnabled=true;
+stage.prepend(renderer.domElement);
+const camera=new THREE.PerspectiveCamera(36,1,0.1,400);
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;controls.dampingFactor=0.08;
+scene.add(new THREE.HemisphereLight(0xffffff,0x4a4a55,0.75));
+const dl=new THREE.DirectionalLight(0xffffff,0.75);dl.position.set(12,20,18);scene.add(dl);
+const dl2=new THREE.DirectionalLight(0xffffff,0.35);dl2.position.set(-14,-6,-18);scene.add(dl2);
+
+const clip=new THREE.Plane(new THREE.Vector3(0,-1,0),100);
+const COL={bone:0xd9c290,disc:0x8fb8de,all:0x3f78b5,lf:0xc0533a,isl:0xc98a6a,sac:0x7fbf8f,cord:0x5aa36d,root:0x2f9e55,drg:0x247a43,psoas:0xc2574a,hit:0xd2452b};
+function mat(c,o={}){return new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:0.62,metalness:0.02,side:THREE.DoubleSide,clippingPlanes:[clip]},o));}
+const groups={};['bone','disc','lig','neural','root','psoas','fx'].forEach(k=>{groups[k]=new THREE.Group();scene.add(groups[k]);});
+const pickables=[];
+function part(g,c,layer,data,o){const m=new THREE.Mesh(bend(g),mat(c,o));m.userData=Object.assign({base:c},data);groups[layer].add(m);if(data&&data.k)pickables.push(m);return m;}
+
+/* vertebrae L1-L5 */
+LEV.forEach((lv,i)=>{
+  const y=yc(i), r=1.62+i*0.07, pr=0.25+i*0.125, px=1.3+i*0.07, a=(12+i*4.5)*Math.PI/180;
+  part(cyl(r,2.4,0,y,0,1.25),COL.bone,'bone',{k:'body',lv});
+  [1,-1].forEach(s=>{
+    part(cyl(pr,1.6,s*px,y+0.4,-2.45,1,'z',-s*a),COL.bone,'bone',{k:'pedicle',lv});
+    part(box(0.6,0.9,0.7,s*(px+0.1),y-0.05,-3.4),COL.bone,'bone',{k:'pars',lv});
+    part(box(0.62,1.3,0.8,s*(px+0.33),y+1.3,-3.2),COL.bone,'bone',{k:'sap',lv});
+    part(box(0.6,1.25,0.7,s*(px-0.22),y-1.55,-3.62),COL.bone,'bone',{k:'iap',lv});
+    part(box(1.45,1.5,0.45,s*0.72,y-0.45,-3.78,s*0.42),COL.bone,'bone',{k:'lamina',lv});
+    const L5=i===4;
+    part(box(L5?2.0:2.5,L5?0.95:0.5,L5?0.95:0.6,s*(px+(L5?1.25:1.5)),y+0.45,-2.95),COL.bone,'bone',{k:'tp',lv});
+  });
+  part(box(0.5,1.4,2.3,0,y-0.6,-5.15,0,0.12),COL.bone,'bone',{k:'sp',lv});
+});
+
+/* sacrum + S1 */
+(function(){
+  const y=-10.5;
+  part(cyl(2.0,2.4,0,y,0,1.25),COL.bone,'bone',{k:'sacrum'});
+  const g=new THREE.BoxGeometry(7,7,2.6,6,12,2);const p=g.attributes.position;
+  for(let i=0;i<p.count;i++){const yy=p.getY(i);const t=(yy+3.5)/7;p.setX(i,p.getX(i)*(0.3+0.7*t));}
+  g.translate(0,-14.4,-0.9);part(g,COL.bone,'bone',{k:'sacrum'});
+  [1,-1].forEach(s=>{
+    part(cyl(0.8,1.6,s*1.6,y+0.4,-2.45,1,'z',-s*0.5),COL.bone,'bone',{k:'sacrum'});
+    part(box(0.7,1.3,0.85,s*1.95,y+1.3,-3.2),COL.bone,'bone',{k:'sap',lv:'S1'});
+  });
+  part(box(3.6,2.6,0.6,0,y-0.6,-3.75),COL.bone,'bone',{k:'sacrum'});
+})();
+
+/* discs */
+const discY=[];
+for(let i=0;i<5;i++){const y=yc(i)-1.75-(i===4?0.08:0);const r=1.62+i*0.07+0.03;const nm=i<4?LEV[i]+'-'+LEV[i+1]:'L5-S1';discY.push([nm,y]);
+  part(cyl(r,i===4?1.0:0.9,0,y,0,1.25),COL.disc,'disc',{k:'disc',lv:nm},{transparent:true,opacity:0.85});}
+
+/* ligaments */
+part(box(1.7,19.5,0.14,0,-0.3,yToFront(),0,0,60),COL.all,'lig',{k:'all'});
+function yToFront(){return 2.06;}
+part(box(0.9,21,0.12,0,-0.3,-2.0,0,0,60),COL.all,'lig',{k:'pll'});
+const lfMesh={};
+for(let i=0;i<5;i++){const y=yc(i)-2.0;const nm=i<4?LEV[i]+'-'+LEV[i+1]:'L5-S1';
+  lfMesh[nm]=part(box(2.7,2.2,0.28,0,y,-3.45),COL.lf,'lig',{k:'lf',lv:nm});
+  part(box(0.3,1.5,1.9,0,y-0.25,-5.15),COL.isl,'lig',{k:'isl',lv:nm});
+  if(i<4)[1,-1].forEach(s=>part(box(0.16,2.6,0.16,s*(1.3+i*0.07+1.9),yc(i)-1.6,-2.95),COL.isl,'lig',{k:'itl',lv:nm}));}
+part(box(0.32,18,0.18,0,-0.6,-6.38,0,0,60),COL.isl,'lig',{k:'ssl'});
+
+/* neural: cord, conus, sac, cauda */
+part(tube([[0,14,-2.7],[0,8,-2.7],[0,6.2,-2.7]],0.4,30),COL.cord,'neural',{k:'cord'});
+(function(){const g=new THREE.ConeGeometry(0.4,1.4,24,4);g.rotateX(Math.PI);g.translate(0,5.5,-2.7);part(g,COL.cord,'neural',{k:'cord'});})();
+part(tube([[0,14,-2.7],[0,0,-2.7],[0,-13.2,-2.7]],0.64,120),COL.sac,'neural',{k:'sac'},{transparent:true,opacity:0.28,depthWrite:false});
+for(let j=0;j<8;j++){const ang=j/8*Math.PI*2;const x=Math.cos(ang)*0.3,z=-2.7+Math.sin(ang)*0.3;
+  part(tube([[x*0.4,5.2,z],[x,0,z],[x,-12.8,z]],0.05,60),COL.cord,'neural',{});}
+
+/* nerve roots + DRG */
+const ROOTS=['L1','L2','L3','L4','L5','S1'];
+const rootMesh={};
+ROOTS.forEach((nm,i)=>{
+  const y=i<5?yc(i):-10.5, px=i<5?1.3+i*0.07:1.6, zc=-2.7;
+  [1,-1].forEach(s=>{
+    const pts=[[s*0.3,y+4.2,zc],[s*0.75,y+2.6,zc+0.25],[s*0.95,y+1.75,zc+0.45],[s*(px-0.35),y+0.3,zc+0.1],[s*(px+0.05),y-0.55,zc-0.05],[s*(px+0.95),y-0.95,zc+0.25],[s*(px+2.1),y-1.6,zc+0.75],[s*(px+3.3),y-2.8,zc+1.25]];
+    const m=part(tube(pts,0.17,90),COL.root,'root',{k:'root',lv:nm});
+    (rootMesh[nm]=rootMesh[nm]||[]).push(m);
+    const g=new THREE.SphereGeometry(0.36,20,14);g.scale(1.5,1,1);g.translate(s*(px+0.95),y-0.95,zc+0.25);
+    const d=part(g,COL.drg,'root',{k:'drg',lv:nm});rootMesh[nm].push(d);
+  });
+});
+
+/* psoas */
+[1,-1].forEach(s=>part(tube([[s*2.3,8.6,0.1],[s*2.9,2,0.4],[s*3.5,-5,0.8],[s*4.4,-11,1.8],[s*5.0,-16,3.4]],1.05,60),COL.psoas,'psoas',{k:'psoas'},{transparent:true,opacity:0.38,depthWrite:false}));
+groups.psoas.visible=false;
+
+/* level labels */
+function label(t,x,y,z){const c=document.createElement('canvas');c.width=128;c.height=64;const g=c.getContext('2d');g.font='bold 38px "Times New Roman",serif';g.fillStyle='#3b2a0c';g.textAlign='center';g.textBaseline='middle';g.fillText(t,64,34);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false,transparent:true,clippingPlanes:[clip]}));sp.scale.set(1.8,0.9,1);sp.position.copy(V3(x,y,z));scene.add(sp);}
+LEV.forEach((lv,i)=>label(lv,-4.9,yc(i),0.6));label('S1',-4.9,-10.5,0.6);
+
+/* herniation blobs */
+function blob(x,y,z,r){const g=new THREE.SphereGeometry(r,24,16);g.scale(1.25,0.7,1);g.translate(x,y,z);const m=new THREE.Mesh(bend(g),mat(COL.hit));m.visible=false;groups.fx.add(m);return m;}
+const yd45=discY[3][1], ydS1=discY[4][1];
+const BL={a:blob(1.0,yd45,-1.95,0.55),b:blob(3.25,yd45+0.15,-1.55,0.55),c:blob(3.3,ydS1+0.1,-1.55,0.55)};
+
+/* info */
+const D={
+ body:{g:'骨頭 / 前柱',n:'椎體',f:'承重主體。腎形, 橫徑大於前後徑; L1 到 L5 逐節變大。',x:'骨折, 骨刺; 往後伸出椎弓根接上後方元件。',r:'Spine Secrets Q1'},
+ disc:{g:'前柱 / 椎體間連接',n:'椎間盤',f:'承重吸震。腰椎前凸 80% 來自椎間盤楔形, 最下三個 (L3-4, L4-5, L5-S1) 占總前凸一半。',x:'後外側突出 (zone 1) 壓下一號走行根; 極外側 (zone 3) 壓同號出口根; 中央大突出壓馬尾。',r:'Q7, Q9, Q16-Q17'},
+ pedicle:{g:'骨頭 / 後方元件 (線上)',n:'椎弓根',f:'連接椎體與後方元件。寬度 L1 6 mm 到 L5 18 mm, 內傾 12° 到 30° (模型照此遞增)。神經根在它正下方出孔。',x:'側方狹窄的分區參考點; 螺絲內側破壁傷走行根。',r:'Q1, Q3, Q11, Q15'},
+ pars:{g:'骨頭 / 後方元件',n:'Pars interarticularis',f:'椎弓根下緣假想線上, 上下兩半的交界; 連接 lamina 與上, 下關節突。L5 的 pars 外側緣對到椎弓根中線。',x:'力量集中區, 反覆應力斷裂 = spondylolysis, 好發 L5。',r:'Q1, Q2'},
+ sap:{g:'骨頭 / facet (線上)',n:'上關節突 SAP',f:'與上一節 IAP 組成 facet, 位於外前方。上中腰椎 facet 呈矢狀面 (可屈伸, 擋旋轉), L5-S1 呈冠狀面 (擋前滑)。',x:'其內下方就是 lateral recess (zone 1); 肥大壓走行根, 尖端上頂讓神經孔變窄。',r:'Q6, Q15'},
+ iap:{g:'骨頭 / facet (線下)',n:'下關節突 IAP',f:'位於下一節 SAP 的後內側, 共組 facet 關節。',x:'facet 退化; 矢狀面方向擋不住前滑, 是 L4-5 退化性滑脫的原因之一。',r:'Q6'},
+ tp:{g:'骨頭 / 後方元件 (線上)',n:'橫突',f:'細長, 唯 L5 粗短寬厚 (模型照此), 承接 iliolumbar 與 lumbosacral ligament。也是髂腰肌起端之一。',x:'L5 橫突與薦椎翼之間可夾到 L5 神經根 (補充)。',r:'Q1, Q7, Hoppenfeld T12-L3'},
+ lamina:{g:'骨頭 / 後方元件 (線下)',n:'椎板',f:'經 pars 接到椎弓根, 合成骨弓保護椎管後方; 前面附著黃韌帶。',x:'減壓手術移除的對象; 切太外側會傷 pars 或 facet。',r:'Q1, Q7'},
+ sp:{g:'骨頭 / 後方元件 (線下)',n:'棘突',f:'肌肉槓桿與後方張力帶; 之間為棘間韌帶, 尖端串著棘上韌帶。',x:'手術觸診定位層級。',r:'Q1, Q7'},
+ sacrum:{g:'骨頭',n:'薦椎',f:'五節融合; S1 椎弓根為全身最大; promontory 為 S1 椎體前上緣; ala 由 S1 橫突加肋骨成分融合。與骨盆合為「骨盆椎」。',x:'S1 螺絲的主要錨點。',r:'Q4, Q10'},
+ all:{g:'韌帶 / 椎體間',n:'前縱韌帶 ALL',f:'貼椎體與椎間盤前面, 寬而強。',x:'前方入路需切開; L5-S1 前方有 superior hypogastric plexus。',r:'Q7, Q19'},
+ pll:{g:'韌帶 / 椎體間',n:'後縱韌帶 PLL',f:'貼椎體與椎間盤後面 = 椎管前壁; 正中最強, 兩側較薄 (模型畫得較窄)。',x:'把突出擠向兩側, 所以突出多為後外側, 壓走行根。',r:'Q7, Q16'},
+ lf:{g:'韌帶 / 骨弓間',n:'黃韌帶',f:'連接上下椎板 = 椎管後壁, 外側延續到 facet 關節囊。',x:'肥厚皺折造成中央管與 lateral recess 狹窄, 伸展時加重, 前彎緩解。',r:'Q7, Q15'},
+ isl:{g:'韌帶 / 骨弓間',n:'棘間韌帶',f:'填在上下棘突之間。',x:'後方張力帶的一部分。',r:'Q7'},
+ ssl:{g:'韌帶 / 骨弓間',n:'棘上韌帶',f:'沿棘突尖端串成一條。',x:'後方張力帶的一部分。',r:'Q7'},
+ itl:{g:'韌帶 / 骨弓間',n:'橫突間韌帶',f:'連接上下橫突。',x:'',r:'Q7'},
+ cord:{g:'神經',n:'脊髓與 conus medullaris',f:'成人脊髓在 L1-L2 以 conus 結束 (模型照此); 以下為馬尾。',x:'L1-L2 以上病灶: 感覺平面加上運動神經元徵象 (補充)。',r:'Q11'},
+ sac:{g:'神經',n:'硬膜囊與馬尾',f:'L1-L2 以下容納所有腰, 薦, 尾神經根; 前為椎間盤與 PLL, 後為黃韌帶與椎板。',x:'前後夾擠 = 中央管狹窄; 大型中央突出可致馬尾症候群。',r:'Q11, Q15'},
+ drg:{g:'神經 (補充)',n:'背根神經節 DRG',f:'後根 (感覺) 在神經孔 (zone 2) 內的膨大; 孔外與前根合成混合脊神經。',x:'極外側或孔內病灶直接壓 DRG 時, 疼痛與感覺異常特別明顯。',r:'整合: 肌力 vs 感覺'},
+ psoas:{g:'肌肉',n:'髂腰肌',f:'起於腰椎椎體前側, 橫突, 椎間盤與髂窩, 止於股骨小轉子; 髖部主要屈曲肌。[T12], L1-L3 支配。L1-L4 出口根穿過它組成腰神經叢。',x:'膿瘍 (測試會痛); 椎間盤炎的膿可沿肌鞘下流 (補充)。',r:'Hoppenfeld T12-L3'}
+};
+const MUS={L1:'髂腰肌',L2:'髂腰肌, 股四頭肌, 內收肌群',L3:'髂腰肌, 股四頭肌, 內收肌群',L4:'股四頭肌, 內收肌群'};
+function prevLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)-1];}
+function nextLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)+1];}
+function rootInfo(n){const p=prevLv(n),q=nextLv(n);
+  return {g:'神經根',n:n+' 神經根',
+   f:'在 '+p+'-'+n+' 椎間盤層級是走行根 (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根正下方的 '+n+'-'+q+' 神經孔出孔, 成為出口根。'+(MUS[n]?' 支配: '+MUS[n]+'.':' 肌肉支配: 講義尚未讀到。'),
+   x:p+'-'+n+' 後外側突出, 或 '+n+'-'+q+' 極外側突出, 都會壓到 '+n+'.',r:'Q13, Q16-Q18'};}
+const $=id=>document.getElementById(id);
+let sel=null;
+function showInfo(m){if(sel){sel.material.emissive.setHex(0x000000);}sel=m;
+  if(!m)return;m.material.emissive.setHex(0x553a00);
+  const u=m.userData;const d=u.k==='root'?rootInfo(u.lv):D[u.k];if(!d)return;
+  $('ig').textContent=d.g;$('in').textContent=d.n+(u.lv&&u.k!=='root'?' ('+u.lv+')':'');$('if').textContent=d.f;$('ix').textContent=d.x||'-';}
+(function(){const d=rootInfo('L4');$('ig').textContent='點選模型中的任何構造 (目前顯示: 神經根)';$('if').textContent=d.f;$('ix').textContent=d.x;})();
+
+/* picking + hover */
+const ray=new THREE.Raycaster(), mouse=new THREE.Vector2();let down=null;
+function hit(ev){const r=renderer.domElement.getBoundingClientRect();mouse.x=((ev.clientX-r.left)/r.width)*2-1;mouse.y=-((ev.clientY-r.top)/r.height)*2+1;ray.setFromCamera(mouse,camera);
+  const list=pickables.filter(m=>{let o=m;while(o){if(!o.visible)return false;o=o.parent;}return true;});
+  const hs=ray.intersectObjects(list,false).filter(h=>clip.distanceToPoint(h.point)>=0);return hs[0]&&hs[0].object;}
+renderer.domElement.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY];});
+renderer.domElement.addEventListener('pointerup',e=>{if(down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])<5){const m=hit(e);if(m)showInfo(m);}down=null;});
+const tip=$('tip');
+renderer.domElement.addEventListener('pointermove',e=>{if(e.buttons){tip.hidden=true;return;}const m=hit(e);if(!m){tip.hidden=true;return;}
+  const u=m.userData;const d=u.k==='root'?{n:u.lv+' 神經根'}:D[u.k];tip.textContent=d.n+(u.lv&&u.k!=='root'?' '+u.lv:'');const r=stage.getBoundingClientRect();tip.style.left=(e.clientX-r.left+12)+'px';tip.style.top=(e.clientY-r.top+12)+'px';tip.hidden=false;});
+renderer.domElement.addEventListener('pointerleave',()=>tip.hidden=true);
+
+/* layers */
+const lmap={bone:'bone',disc:'disc',lig:'lig',neural:'neural',root:'root',psoas:'psoas'};
+Object.keys(lmap).forEach(k=>$('ly-'+k).addEventListener('change',e=>{groups[lmap[k]].visible=e.target.checked;}));
+$('ly-ghost').addEventListener('change',e=>{groups.bone.children.forEach(m=>{m.material.transparent=e.target.checked;m.material.opacity=e.target.checked?0.3:1;m.material.depthWrite=!e.target.checked;m.material.needsUpdate=true;});});
+
+/* axial cut */
+const cutY={'L3-4':discY[2][1]+0.05,'L4p':yc(3)+0.4,'L4-5':discY[3][1]+0.05,'L5p':yc(4)+0.4,'L5-S1':discY[4][1]+0.05};
+function setCut(v){if(v==='off'){clip.constant=100;return;}const y=cutY[v];const p=V3(0,y,0);clip.constant=p.y;}
+$('cut').addEventListener('change',e=>setCut(e.target.value));
+
+/* views */
+const T0=V3(0,-4,-1);
+const VIEWS={oblique:[26,8,-38],front:[0,0,58],side:[58,0,0],back:[0,0,-58],top:[0,50,-6]};
+let T=T0;
+function view(k,inst){const v=VIEWS[k].slice();T=T0;const cv=$('cut').value;
+  if(k==='top'&&cv!=='off'){T=V3(0,cutY[cv],-1);v[0]=0;v[1]=24;v[2]=-3;}
+  const to=new THREE.Vector3(T.x+v[0],T.y+v[1],T.z+v[2]);
+  if(inst){camera.position.copy(to);controls.target.copy(T);controls.update();return;}
+  const from=camera.position.clone(),t0=performance.now();controls.target.copy(T);
+  (function step(){const t=Math.min(1,(performance.now()-t0)/600);const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;camera.position.lerpVectors(from,to,e);controls.update();if(t<1)requestAnimationFrame(step);})();}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.view==='top'&&$('cut').value==='off'){$('cut').value='L4-5';setCut('L4-5');}view(b.dataset.view);}));
+
+/* scenarios */
+const SC={
+ a:{blob:'a',roots:['L5'],note:'L4-5 後外側突出 (zone 1): 被 PLL 擠向一側, 壓到在 lateral recess 往下走的 L5 走行根。L4 已在上方出孔, 不受影響。'},
+ b:{blob:'b',roots:['L4'],note:'L4-5 極外側突出 (zone 3): 在椎弓根外側, 壓到已出孔的 L4 出口根 (股四頭肌, 內收肌無力)。'},
+ c:{blob:'c',roots:['L5'],note:'L5-S1 極外側突出 (zone 3): 壓 L5 出口根。和情境一比較: L5 可在兩個不同椎間盤層級被壓 (Q18)。'},
+ d:{lf:'L4-5',roots:['L5'],note:'L4-5 中央狹窄: 黃韌帶肥厚由後方往內擠, 加上 facet 肥大與膨出的椎間盤, 硬膜囊與兩側 L5 走行根一起被夾。'}
+};
+let cur=null;
+function resetSc(){Object.values(BL).forEach(b=>b.visible=false);Object.values(rootMesh).flat().forEach(m=>{m.material.color.setHex(m.userData.base);m.material.opacity=1;m.material.transparent=false;});
+  Object.values(lfMesh).forEach(m=>{m.scale.set(1,1,1);m.material.color.setHex(COL.lf);});
+  document.querySelectorAll('[data-sc]').forEach(b=>b.setAttribute('aria-pressed','false'));$('scnote').textContent='';cur=null;}
+function runSc(k){const s=SC[k];resetSc();cur=k;document.querySelector('[data-sc="'+k+'"]').setAttribute('aria-pressed','true');
+  if(s.blob)BL[s.blob].visible=true;
+  Object.entries(rootMesh).forEach(([n,ms])=>ms.forEach(m=>{if(s.roots.includes(n)){m.material.color.setHex(COL.hit);}else{m.material.transparent=true;m.material.opacity=0.35;}}));
+  if(s.lf){const m=lfMesh[s.lf];m.material.color.setHex(COL.hit);}
+  $('scnote').textContent=s.note;showInfo(rootMesh[s.roots[0]][0]);
+  if(!groups.root.visible){groups.root.visible=true;$('ly-root').checked=true;}}
+document.querySelectorAll('[data-sc]').forEach(b=>b.addEventListener('click',()=>{if(cur===b.dataset.sc)resetSc();else runSc(b.dataset.sc);}));
+/* thick LF needs geometry in place: emulate by scaling toward canal around its own center */
+
+/* theme-aware background */
+function bg(){const c=getComputedStyle(document.documentElement).getPropertyValue('--stage').trim()||'#e3e8ec';renderer.setClearColor(new THREE.Color(c));}
+bg();try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',bg);}catch(e){}
+new MutationObserver(bg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(stage);resize();
+view('oblique',true);setCut('off');$('cut').value='off';
+(function loop(){controls.update();renderer.render(scene,camera);requestAnimationFrame(loop);})();
+})();
+</script>
+
+</body>
+</html>
