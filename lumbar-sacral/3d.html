@@ -272,7 +272,7 @@ function prevLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return a
 function nextLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)+1];}
 function rootInfo(n){const p=prevLv(n),q=nextLv(n);
   return {g:'神經根',n:n+' 神經根',
-   f:'在 '+p+'-'+n+' 椎間盤層級是走行根 (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根正下方的 '+n+'-'+q+' 神經孔出孔, 成為出口根。'+(MUS[n]?' 支配: '+MUS[n]+'.':' 肌肉支配: 講義尚未讀到。'),
+   f:'在 '+p+'-'+n+' 椎間盤層級是走行根 (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根正下方的 '+n+'-'+q+' 神經孔出孔, 成為出口根。'+(MUS[n]?'支配: '+MUS[n]+'。':'肌肉支配: 講義尚未讀到。'),
    x:p+'-'+n+' 後外側突出, 或 '+n+'-'+q+' 極外側突出, 都會壓到 '+n+'.',r:'Q13, Q16-Q18'};}
 const $=id=>document.getElementById(id);
 let sel=null;
