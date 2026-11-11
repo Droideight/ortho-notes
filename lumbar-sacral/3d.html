@@ -267,12 +267,13 @@ const D={
  drg:{g:'神經 (補充)',n:'背根神經節 DRG',f:'後根 (dorsal root) (感覺) 在神經孔 (zone 2) 內的膨大; 孔外與前根 (ventral root)合成混合脊神經。',x:'極外側或孔內病灶直接壓 DRG 時, 疼痛與感覺異常特別明顯。',r:'整合: 肌力 vs 感覺'},
  psoas:{g:'肌肉',n:'髂腰肌 (iliopsoas)',f:'起於腰椎椎體 (vertebral body)前側, 橫突 (transverse process), 椎間盤 (intervertebral disc)與髂窩, 止於股骨小轉子 (lesser trochanter); 髖部主要屈曲肌。[T12], L1-L3 支配。L1-L4 出口根 (exiting root)穿過它組成腰神經叢 (lumbar plexus)。',x:'膿瘍 (測試會痛); 椎間盤炎的膿可沿肌鞘下流 (補充)。',r:'Hoppenfeld T12-L3'}
 };
-const MUS={L1:'髂腰肌',L2:'髂腰肌, 股四頭肌, 內收肌群',L3:'髂腰肌, 股四頭肌, 內收肌群',L4:'股四頭肌, 內收肌群'};
+const MUS={L1:'髂腰肌',L2:'髂腰肌, 股四頭肌, 內收肌群',L3:'髂腰肌, 股四頭肌, 內收肌群',L4:'脛骨前肌 (tibialis anterior, 主要), 股四頭肌, 內收肌群; 反射: 髕腱反射 (patellar tendon reflex)'};
+const DERM={L1:'鼠蹊韌帶正下方的斜帶',L2:'大腿中段前側',L3:'髕骨正上方的斜帶',L4:'小腿與足部內側',L5:'小腿外側與足背',S1:'足部外側'};
 function prevLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)-1];}
 function nextLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)+1];}
 function rootInfo(n){const p=prevLv(n),q=nextLv(n);
   return {g:'神經根 (nerve root)',n:n+' 神經根',
-   f:'在 '+p+'-'+n+' 椎間盤 (intervertebral disc)層級是走行根 (traversing root) (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根 (pedicle)正下方的 '+n+'-'+q+' 神經孔 (neural foramen)出孔, 成為出口根 (exiting root)。'+(MUS[n]?'支配: '+MUS[n]+'。':'肌肉支配: 講義尚未讀到。'),
+   f:'在 '+p+'-'+n+' 椎間盤 (intervertebral disc)層級是走行根 (traversing root) (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根 (pedicle)正下方的 '+n+'-'+q+' 神經孔 (neural foramen)出孔, 成為出口根 (exiting root)。'+(MUS[n]?'支配: '+MUS[n]+'。':'肌肉支配: 講義尚未讀到。')+(DERM[n]?' 皮節 (dermatome): '+DERM[n]+'。':''),
    x:p+'-'+n+' 後外側突出, 或 '+n+'-'+q+' 極外側突出, 都會壓到 '+n+'.',r:'Q13, Q16-Q18'};}
 const $=id=>document.getElementById(id);
 let sel=null;
