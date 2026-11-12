@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>下肢神經機能階層</title>
+</head>
+<body>
+<style>
+/* layout: single reading column, figures break out to full width; clinical notes as side-tinted blocks */
+:root{
+  --bg:#e4e4e4; --paper:#ffffff; --ink:#000000; --muted:#555555; --line:#a8a8a8;
+  --bone:#b8924a; --bone-fill:#efe2c4; --bone-deep:#7a5a20;
+  --accent:#1f3a60; --accent-soft:#dfe6ee;
+  --clin:#9b2a1a; --clin-soft:#f6e6e0;
+  --ok:#2a6a2a; --bad:#b00000;
+  --f-display:"Times New Roman","PMingLiU","新細明體",serif;
+  --f-body:"PMingLiU","新細明體","MingLiU","細明體","Times New Roman",serif;
+  --f-mono:"Courier New","MingLiU",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:20px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1.05;margin:0;text-wrap:balance}
+h1 span{color:var(--bone-deep)}
+.lede{color:var(--muted);margin:0;max-width:62ch}
+nav{display:flex;flex-wrap:wrap;gap:8px}
+nav a{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+section{display:flex;flex-direction:column;gap:16px}
+h2{font-family:var(--f-display);font-weight:600;font-size:28px;line-height:1.2;margin:0;display:flex;gap:12px;align-items:baseline;text-wrap:balance}
+h2 .q{font-family:var(--f-mono);font-size:13px;color:var(--bone-deep);font-weight:500;border:1px solid var(--bone);padding:1px 7px;border-radius:4px}
+h3{font-size:17px;margin:4px 0 0}
+p{margin:0;max-width:68ch}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px;max-width:68ch}
+em{font-style:italic}
+.term{font-family:var(--f-mono);font-size:.92em;color:var(--accent)}
+.fig{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fig .scroll{overflow-x:auto}
+.fig svg{display:block;width:100%;height:auto;min-width:520px}
+.cap{font-size:13px;color:var(--muted)}
+.cap b{color:var(--ink);font-family:var(--f-mono);font-weight:500}
+.clin{background:var(--clin-soft);border-left:3px solid var(--clin);padding:12px 16px;display:flex;flex-direction:column;gap:6px}
+.clin .tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--clin)}
+.clin p,.clin ul{font-size:15px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px;background:var(--paper)}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--f-mono);font-weight:500;font-size:12.5px;letter-spacing:.04em;color:var(--muted);background:var(--bg)}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* svg tokens */
+.s-bone{fill:var(--bone-fill);stroke:var(--bone);stroke-width:2}
+.s-hi{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.s-ped{fill:none;stroke:var(--clin);stroke-width:2;stroke-dasharray:5 4}
+.s-line{stroke:var(--ink);stroke-width:1.4;fill:none}
+.s-dash{stroke:var(--accent);stroke-width:1.6;stroke-dasharray:7 5;fill:none}
+.s-red{stroke:var(--clin);stroke-width:2;fill:none}
+.s-hole{fill:var(--bg);stroke:var(--bone);stroke-width:1.5}
+.t{fill:var(--ink);font-family:var(--f-body);font-size:13px}
+.t-m{fill:var(--muted);font-family:var(--f-mono);font-size:11.5px}
+.t-a{fill:var(--accent);font-family:var(--f-mono);font-size:12px}
+.t-c{fill:var(--clin);font-family:var(--f-mono);font-size:12px}
+.t-h{fill:var(--ink);font-family:var(--f-display);font-size:17px;font-weight:600}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+details.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
+details.card summary{cursor:pointer;font-weight:500;list-style:none;display:flex;gap:8px}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::before{content:"Q";font-family:var(--f-mono);font-size:12px;color:var(--bone-deep);border:1px solid var(--bone);border-radius:3px;padding:0 5px;height:fit-content;margin-top:4px}
+details.card[open]{border-color:var(--accent)}
+details.card .a{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:15px;color:var(--ink)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* quiz */
+.quiz{display:flex;flex-direction:column;gap:14px}
+.qitem{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.qitem .stem{font-weight:500}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts button{font:inherit;font-size:15px;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:7px 10px;cursor:pointer}
+.opts button:hover,.opts button:focus-visible{border-color:var(--accent);outline:none}
+.opts button.right{border-color:var(--ok);color:var(--ok);font-weight:500}
+.opts button.wrong{border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opts button:disabled{cursor:default}
+.fb{font-size:14.5px;color:var(--muted)}
+.score{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.src{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><style>
+:root{--nerve:#2f7d4a;--nerve-soft:#dcefe1}
+.ov{display:grid;grid-template-columns:1fr;gap:12px}
+@media (max-width:760px){.ov{grid-template-columns:1fr}}
+.ov svg{min-width:0!important}
+.hot{cursor:pointer}
+.hot:hover>*,.hot:focus-visible>*{filter:brightness(.92)}
+.hot:focus{outline:none}
+.hot.sel>:not(text){stroke:var(--ink)!important;stroke-width:3!important}
+.s-nerve{fill:var(--nerve-soft);stroke:var(--nerve);stroke-width:2}
+.t-n{fill:var(--nerve);font-family:var(--f-mono);font-size:11.5px;font-weight:500}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.panel h3{margin:0;font-size:18px}
+.panel .grp{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.panel dl{margin:0;display:grid;grid-template-columns:4.5em 1fr;gap:6px 10px;font-size:15px}
+.panel dt{color:var(--muted);font-size:13px;padding-top:2px}
+.panel dd{margin:0}
+.scen{display:flex;flex-wrap:wrap;gap:8px}
+.scen button{font:inherit;font-size:13.5px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer}
+.scen button[aria-pressed="true"]{border-color:var(--clin);color:var(--clin);background:var(--clin-soft)}
+.scen button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.blob{fill:var(--clin);opacity:.85}
+.hit>*{fill:var(--clin-soft)!important;stroke:var(--clin)!important;stroke-width:3.5!important}
+#ov-lf.thick line{stroke-width:15}
+</style><style>
+body{font-size:14px;line-height:1.6;padding-block:12px 24px}
+.wrap{max-width:900px;background:var(--paper);border:1px solid #808080;gap:22px;padding-bottom:0}
+.wrap>section,.wrap>.src{padding-left:18px;padding-right:18px}
+header{background:#1f3a60;color:#fff;border-bottom:3px solid #b8860b;padding:12px 18px 0;gap:6px}
+.eyebrow{color:#cfd8e3;letter-spacing:0;text-transform:none;font-family:var(--f-body);font-size:12px}
+h1{font-size:26px;color:#fff;font-weight:bold;font-family:var(--f-display)}
+h1 span{color:#e8d7a8;font-size:18px}
+.lede{color:#dfe6ee;font-size:13px;max-width:none}
+nav{background:#ece9d8;margin:6px -18px 0;padding:4px 18px;border-top:1px solid #808080;gap:2px 0}
+nav a{font-family:var(--f-body);font-size:13px;color:#0033cc!important;text-decoration:underline;border:none!important;border-right:1px solid #999!important;border-radius:0;background:none;padding:0 8px}
+nav a:hover{color:#cc0000!important}
+h2{font-family:var(--f-display);font-size:20px;border-bottom:2px solid #1f3a60;padding-bottom:3px;color:#1f3a60}
+h2 .q{font-family:var(--f-body);font-size:12px;color:#fff;background:#1f3a60;border:none;border-radius:0;padding:0 6px}
+h3{font-size:15px;color:#1f3a60;font-family:var(--f-display)}
+p,ul{max-width:none}
+.fig,.panel{border:2px groove #d0d0d0;border-radius:0}
+.cap{font-size:12px;color:#444}
+.cap b{font-family:var(--f-body);font-weight:bold}
+.clin{background:#fffbe6;border:1px solid #c9b46a;border-left-width:1px;padding:8px 12px}
+.clin .tag{font-family:var(--f-body);text-transform:none;letter-spacing:0;font-weight:bold;color:#7a5a00;font-size:13px}
+table{font-size:13px}
+th{background:#e8e8e8;color:#000;font-family:var(--f-body);font-size:13px;letter-spacing:0;font-weight:normal}
+th,td{border-color:#b0b0b0}
+details.card{border-radius:0;border:1px solid #b0b0b0;background:#fafafa}
+details.card summary::before{border-radius:0;font-family:var(--f-body);background:#1f3a60;color:#fff;border:none}
+details.card[open]{border-color:#1f3a60}
+.qitem{border-radius:0;border:1px solid #b0b0b0}
+.opts button,.scen button{border-radius:2px;background:#f0f0f0;border:1px solid #999;font-family:var(--f-body);font-size:13px;color:#000}
+.opts button.right{border-color:var(--ok);color:var(--ok)}
+.opts button.wrong{border-color:var(--bad);color:var(--bad)}
+.scen button[aria-pressed="true"]{border-style:inset;font-weight:bold;color:#900;background:#f0f0f0}
+.score{font-family:var(--f-body);font-size:13px}
+.panel .grp{font-family:var(--f-body)}
+.src{border-top:1px solid #808080;font-size:12px;background:#f0f0f0;padding-top:8px;padding-bottom:8px}
+.term{color:#1f3a60}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">骨科學習筆記 / 骨科神經學</div>
+  <h1>下肢神經機能階層</h1>
+  <nav>
+    <a href="../">章節目錄</a><a href="../lumbar-sacral/">腰薦椎整合筆記</a><a href="#lv">三件套</a><a href="#dmap">皮節</a><a href="#tst">測試查表</a><a href="#ms">肌力 vs 感覺</a><a href="#quiz">測驗</a>
+  </nav>
+</header>
+<section id="lv">
+  <h2>各層的肌肉, 反射, 皮節</h2>
+  <p>T12-L3 沒有代表性的肌肉與反射, 靠皮節定位; L4 起每一層都有三件套, 從足部內側排到外側。</p>
+<div class="tbl">
+  <table>
+    <thead><tr><th>層級</th><th>運動</th><th>反射</th><th>感覺 (皮節)</th></tr></thead>
+    <tbody>
+      <tr><td><b>L4</b></td><td>脛骨前肌 (tibialis anterior): 足背屈 (dorsiflexion)加內翻 (inversion)</td><td>髕腱反射 (patellar tendon reflex)</td><td>小腿內側到足部內側</td></tr>
+      <tr><td><b>L5</b></td><td>伸拇長肌 (extensor hallucis longus), 伸趾長肌與伸趾短肌, 臀中肌 (gluteus medius)</td><td>無容易引出的反射 (脛骨後肌 (tibialis posterior)反射難引出)</td><td>小腿外側與足背</td></tr>
+      <tr><td><b>S1</b></td><td>腓骨長肌與短肌, 腓腸肌 (gastrocnemius)-比目魚肌 (soleus), 臀大肌 (gluteus maximus)</td><td>跟腱反射 (Achilles reflex)</td><td>足部外側與部分蹠側</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 330" role="img" aria-label="神經路徑: L4 到 S2 經坐骨神經分出腓總神經與脛神經; 腓深神經支配脛骨前肌, 伸拇長肌, 伸趾長短肌; 腓淺神經支配腓骨長短肌; 脛神經支配腓腸肌比目魚肌; 另有臀上神經到臀中肌, 臀下神經到臀大肌">
+      <g font-size="13">
+      <rect x="10" y="20" width="56" height="30" fill="var(--paper)" stroke="var(--nerve)" stroke-width="1.5"/><text x="38" y="40" text-anchor="middle" class="t-n">L4</text>
+      <rect x="10" y="60" width="56" height="30" fill="var(--paper)" stroke="var(--nerve)" stroke-width="1.5"/><text x="38" y="80" text-anchor="middle" class="t-n">L5</text>
+      <rect x="10" y="100" width="56" height="30" fill="var(--paper)" stroke="var(--nerve)" stroke-width="1.5"/><text x="38" y="120" text-anchor="middle" class="t-n">S1</text>
+      <rect x="10" y="140" width="56" height="30" fill="var(--paper)" stroke="var(--nerve)" stroke-width="1.5"/><text x="38" y="160" text-anchor="middle" class="t-n">S2</text>
+      <rect x="110" y="80" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="160" y="102" text-anchor="middle" class="t">坐骨神經</text>
+      <rect x="250" y="40" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="300" y="62" text-anchor="middle" class="t">腓總神經</text>
+      <rect x="250" y="150" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="300" y="172" text-anchor="middle" class="t">脛神經</text>
+      <rect x="390" y="10" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="440" y="32" text-anchor="middle" class="t">腓深神經</text>
+      <rect x="390" y="80" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="440" y="102" text-anchor="middle" class="t">腓淺神經</text>
+      <rect x="520" y="4" width="150" height="48" fill="var(--paper)" stroke="var(--line)"/><text x="530" y="22" class="t">脛骨前肌 L4</text><text x="530" y="42" class="t">伸拇長, 伸趾長短 L5</text>
+      <rect x="520" y="80" width="150" height="34" fill="var(--paper)" stroke="var(--line)"/><text x="530" y="102" class="t">腓骨長短肌 S1</text>
+      <rect x="520" y="150" width="150" height="34" fill="var(--paper)" stroke="var(--line)"/><text x="530" y="172" class="t">腓腸-比目魚 S1</text>
+      <rect x="250" y="220" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="300" y="242" text-anchor="middle" class="t">臀上神經</text>
+      <rect x="250" y="270" width="100" height="34" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="1.5"/><text x="300" y="292" text-anchor="middle" class="t">臀下神經</text>
+      <rect x="390" y="220" width="130" height="34" fill="var(--paper)" stroke="var(--line)"/><text x="400" y="242" class="t">臀中肌 L5</text>
+      <rect x="390" y="270" width="130" height="34" fill="var(--paper)" stroke="var(--line)"/><text x="400" y="292" class="t">臀大肌 S1</text>
+      </g>
+      <g stroke="var(--nerve)" stroke-width="2" fill="none">
+        <path d="M66 35 L110 92"/><path d="M66 75 L110 96"/><path d="M66 115 L110 100"/><path d="M66 155 L110 106"/>
+        <path d="M210 92 L250 57"/><path d="M210 102 L250 167"/>
+        <path d="M350 52 L390 27"/><path d="M350 62 L390 97"/>
+        <path d="M490 27 L520 27"/><path d="M490 97 L520 97"/><path d="M350 167 L520 167"/>
+        <path d="M66 80 Q200 200 250 237"/><path d="M66 120 Q200 260 250 287"/>
+        <path d="M350 237 L390 237"/><path d="M350 287 L390 287"/>
+      </g>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 H2-5</b> 示意圖。數字為主要層級。</div>
+  </div>
+
+  </section>
+
+<section id="dmap">
+  <h2>下肢皮節</h2>
+<div class="fig" id="derm">
+    <div class="scroll">
+    <svg viewBox="0 0 680 580" role="img" aria-label="右下肢前面觀皮節圖: T12 在鼠蹊上方, L1 緊鄰鼠蹊韌帶下方, L2 大腿中段, L3 髕骨正上方, L4 小腿與足部內側, L5 小腿外側與足背, S1 足外側, S2 與 S3 在會陰">
+      <defs>
+        <clipPath id="legclip"><path d="M190 30 L400 30 L392 115 Q372 120 366 130 L336 320 Q332 340 334 360 L318 470 L322 500 Q352 518 354 548 L232 548 Q226 520 258 500 L262 470 L238 360 Q236 340 240 320 Q204 200 190 30 Z"/></clipPath>
+      </defs>
+      <g clip-path="url(#legclip)" stroke="var(--paper)" stroke-width="1.5">
+        <polygon class="db" data-d="T12" points="150,0 450,0 450,134.8 150,50.8" fill="#e8b4b4"/>
+        <polygon class="db" data-d="L1" points="150,50.8 450,134.8 450,182.8 150,98.8" fill="#f0d08a"/>
+        <polygon class="db" data-d="L2" points="150,98.8 450,182.8 450,257.8 150,173.8" fill="#e2dc78"/>
+        <polygon class="db" data-d="L3" points="150,173.8 450,257.8 450,342.8 150,258.8" fill="#c4dc7c"/>
+        <polygon class="db" data-d="L4" points="285,296.6 450,342.8 450,580 324,580 318,500 291,470" fill="#93cfa0"/>
+        <polygon class="db" data-d="L5" points="150,258.8 285,296.6 291,470 318,500 324,580 262,580 258,500 150,480" fill="#86c3c8"/>
+        <polygon class="db" data-d="S1" points="150,480 258,500 262,580 150,580" fill="#a9b8e6"/>
+      </g>
+      <path d="M190 30 L400 30 L392 115 Q372 120 366 130 L336 320 Q332 340 334 360 L318 470 L322 500 Q352 518 354 548 L232 548 Q226 520 258 500 L262 470 L238 360 Q236 340 240 320 Q204 200 190 30 Z" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+      <circle class="db" data-d="S2" cx="410" cy="140" r="16" fill="#c9a9e6" stroke="var(--ink)" stroke-width="1"/>
+      <line x1="196" y1="63" x2="384" y2="116" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <ellipse cx="290" cy="306" rx="17" ry="21" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+      <g font-size="13" font-family="var(--f-mono)" fill="var(--ink)" text-anchor="middle" pointer-events="none">
+        <text x="255" y="58">T12</text><text x="262" y="102">L1</text><text x="272" y="168">L2</text>
+        <text x="270" y="250">L3</text><text x="314" y="410">L4</text><text x="266" y="410">L5</text>
+        <text x="410" y="145">S2-3</text>
+      </g>
+      <line x1="244" y1="530" x2="150" y2="556" class="s-line" stroke-width=".8"/><text x="100" y="560" class="t">S1</text>
+      <line x1="200" y1="66" x2="110" y2="90" class="s-line" stroke-width=".8"/><text x="40" y="94" class="t">鼠蹊韌帶</text>
+      <line x1="272" y1="306" x2="150" y2="320" class="s-line" stroke-width=".8"/><text x="100" y="324" class="t">髕骨</text>
+      <text x="470" y="40" class="t-m">右下肢前面觀</text>
+      <text x="470" y="58" class="t-m">內側在右, 外側在左</text>
+      <text x="40" y="460" class="t-m">外側 (腓側)</text>
+      <text x="470" y="460" class="t-m">內側 (大拇趾側)</text>
+    </svg>
+    </div>
+    <div class="panel" id="dpanel" aria-live="polite">
+      <div class="grp" id="dg">點選皮節帶</div>
+      <h3 id="dn">L4 皮節</h3>
+      <dl>
+        <dt>位置說明</dt><dd id="dw"></dd>
+        <dt>同一根</dt><dd id="dm"></dd>
+        <dt>誰會壓到</dt><dd id="dx"></dd>
+      </dl>
+    </div>
+    <div class="cap"><b>圖 H2-4</b> 示意圖。小腿 L4 (內) 與 L5 (外) 以脛骨嵴 (tibial crest)為界; S1 延伸到部分足底, 前面觀看不到。</div>
+  </div>
+  <style>
+  #derm .db{cursor:pointer}
+  #derm .db:hover{opacity:.8}
+  #derm .db.sel{stroke:var(--ink);stroke-width:3}
+  </style>
+  <script>
+  (function(){
+    const D={
+      T12:{w:'鼠蹊部上方 (T12 通過鼠蹊部)。',m:'髂腰肌有少量 [T12] 支配。',x:'屬胸椎層級, 不在本章腰椎分區討論內。'},
+      L1:{w:'大腿上方前側的斜帶, 緊鄰鼠蹊韌帶下方。',m:'肌肉: 髂腰肌。反射: 無代表性。',x:'T12-L1 後外側突出, 或 L1-2 極外側突出。'},
+      L2:{w:'大腿中段前側, 夾在 L1 與 L3 之間。',m:'肌肉: 髂腰肌, 股四頭肌, 內收肌群。反射: 無代表性。',x:'L1-2 後外側突出, 或 L2-3 極外側突出。'},
+      L3:{w:'大腿前方的斜帶, 位於髕骨正上方。',m:'肌肉: 髂腰肌, 股四頭肌, 內收肌群。反射: 髕腱反射有部分 L3。',x:'L2-3 後外側突出, 或 L3-4 極外側突出。'},
+      L4:{w:'小腿內側延伸到足部內側; 和 L5 以脛骨嵴為界。',m:'肌肉: 脛骨前肌 (主要), 股四頭肌, 內收肌群。反射: 髕腱反射 (主要就是 L4)。',x:'L3-4 後外側突出, 或 L4-5 極外側突出。'},
+      L5:{w:'小腿外側與足背。',m:'肌肉: 伸拇長肌, 伸趾長短肌, 臀中肌。反射: 無容易引出的反射。',x:'L4-5 後外側突出 (最常見), 或 L5-S1 極外側突出。'},
+      S1:{w:'足部外側與一部分蹠側表面。',m:'肌肉: 腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌。反射: 跟腱反射。',x:'L5-S1 後外側突出。'},
+      S2:{w:'會陰部。',m:'書中尚未讀到。',x:'多根同時受壓 (馬尾) 時出現馬鞍區麻。'}
+    };
+    const root=document.getElementById('derm');
+    function show(k){const d=D[k];if(!d)return;
+      document.getElementById('dg').textContent=k==='S2'?'皮節 S2-S3':'皮節 '+k;
+      document.getElementById('dn').textContent=(k==='S2'?'S2-S3':k)+' 皮節';
+      document.getElementById('dw').textContent=d.w;document.getElementById('dm').textContent=d.m;document.getElementById('dx').textContent=d.x;
+      root.querySelectorAll('.db').forEach(e=>e.classList.toggle('sel',e.dataset.d===k));}
+    root.querySelectorAll('.db').forEach(e=>e.addEventListener('click',()=>show(e.dataset.d)));
+    show('L4');
+  })();
+  </script>
+
+</section>
+
+<section id="tst">
+  <h2>測試查表</h2>
+<style>
+  .tt td.ok{background:#dcefd6} .tt td.mid{background:#fbefc8} .tt td.no{background:#e6e6e6;color:#555} .tt td.tbd{background:#f4f4f4;color:#888}
+  .tt .lg{display:inline-block;width:12px;height:12px;border:1px solid #888;vertical-align:middle;margin:0 4px 0 10px}
+  </style>
+  <p class="tt" style="font-size:13px">
+    <span class="lg" style="background:#dcefd6"></span>有代表性, 可靠
+    <span class="lg" style="background:#fbefc8"></span>有, 但跨多根, 不專屬
+    <span class="lg" style="background:#e6e6e6"></span>沒有
+  </p>
+  <div class="tbl tt">
+  <table>
+    <thead><tr><th>層級</th><th>肌肉</th><th>反射</th><th>感覺: 皮節 (dermatome)</th><th>靠什麼定位</th></tr></thead>
+    <tbody>
+      <tr><td><b>T12</b></td><td class="mid">髂腰肌 (iliopsoas) (少量)</td><td class="no">無</td><td class="ok">鼠蹊部</td><td>感覺</td></tr>
+      <tr><td><b>L1</b></td><td class="mid">髂腰肌</td><td class="no">無</td><td class="ok">鼠蹊韌帶 (inguinal ligament)正下方斜帶</td><td>感覺</td></tr>
+      <tr><td><b>L2</b></td><td class="mid">髂腰肌, 股四頭肌 (quadriceps), 內收肌群 (adductors)</td><td class="no">無</td><td class="ok">大腿中段前側</td><td>感覺</td></tr>
+      <tr><td><b>L3</b></td><td class="mid">髂腰肌, 股四頭肌, 內收肌群</td><td class="mid">髕腱反射 (patellar tendon reflex) (部分)</td><td class="ok">髕骨 (patella)正上方斜帶</td><td>感覺</td></tr>
+      <tr><td><b>L4</b></td><td class="ok">脛骨前肌 (tibialis anterior) (也有 L5)</td><td class="ok">髕腱反射 (主要)</td><td class="ok">小腿與足部內側</td><td>三者合看</td></tr>
+      <tr><td><b>L5</b></td><td class="ok">伸拇長肌, 伸趾長短肌, 臀中肌</td><td class="no">無 (脛骨後肌反射難引出)</td><td class="ok">小腿外側, 足背</td><td>肌力 + 感覺</td></tr>
+      <tr><td><b>S1</b></td><td class="ok">腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌</td><td class="ok">跟腱反射</td><td class="ok">足外側, 部分足底</td><td>三者合看</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>測法速查</h3>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>測什麼</th><th>層級</th><th>怎麼測</th><th>異常時</th></tr></thead>
+    <tbody>
+      <tr><td>髂腰肌 (髖屈曲)</td><td>[T12], L1-L3</td><td>坐檢查台邊雙腳懸空; 壓髂嵴 (iliac crest)穩定骨盆, 股骨遠端施阻力, 請病人抬大腿</td><td>一側稍弱; 會痛想到膿瘍</td></tr>
+      <tr><td>股四頭肌 (伸膝)</td><td>L2-L4</td><td>由蹲姿站起; 或一手穩定大腿, 踝上方施阻力請病人伸膝</td><td>伸展遲滯 (extension lag) (最後 10°)</td></tr>
+      <tr><td>內收肌群 (髖內收)</td><td>L2-L4</td><td>仰臥或側臥, 先外展, 雙膝內側施阻力請病人內收</td><td>一側稍弱</td></tr>
+      <tr><td>脛骨前肌 (背屈 (dorsiflexion)內翻 (inversion))</td><td>L4 (L5)</td><td>腳跟走路; 坐姿背屈內翻碰檢查者拇指, 壓第一蹠骨 (first metatarsal)往蹠屈 (plantar flexion)外翻 (eversion)</td><td>垂足 (drop foot), 跨越步態 (steppage gait)</td></tr>
+      <tr><td>伸拇長肌 (extensor hallucis longus) (翹大拇趾)</td><td>L5</td><td>腳跟走路; 拇指抵大拇趾趾甲, 請病人往上翹</td><td>大拇趾翹不起來</td></tr>
+      <tr><td>臀中肌 (gluteus medius) (髖外展)</td><td>L5</td><td>側臥, 外展腿部對抗阻力</td><td>一側稍弱</td></tr>
+      <tr><td>腓骨長短肌 (外翻)</td><td>S1</td><td>用足內側緣走路; 抵第五蹠骨 (fifth metatarsal), 蹠屈加外翻對抗阻力</td><td>外翻無力</td></tr>
+      <tr><td>腓腸肌 (gastrocnemius)-比目魚肌 (soleus) (蹠屈)</td><td>S1 (S2)</td><td>腳尖走路; 單腳墊腳尖跳約 5 次 (徒手測不出)</td><td>墊不起腳尖</td></tr>
+      <tr><td>臀大肌 (gluteus maximus) (髖伸展)</td><td>S1</td><td>俯臥, 膝屈曲, 抬大腿離台對抗阻力</td><td>一側稍弱</td></tr>
+      <tr><td>髕腱反射</td><td>L4 (L2-L4)</td><td>敲髕腱</td><td>下降: L4 根</td></tr>
+      <tr><td>跟腱反射 (Achilles reflex)</td><td>S1</td><td>坐姿輕微背屈足部, 敲跟腱 (Achilles tendon)</td><td>下降: S1 根</td></tr>
+      <tr><td>皮節感覺</td><td>每一層</td><td>依圖 H2-4 的帶狀區域比對</td><td>單根: 遲鈍, 不會完全缺失</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">L4, L5, S1 剛好從足部內側排到外側: 內翻 (L4), 翹趾 (L5), 外翻 (S1)。</p>
+</section>
+
+<section id="ms">
+  <h2>什麼時候影響肌力, 什麼時候影響感覺</h2>
+
+  <h3>基本原則</h3>
+  <ul>
+    <li><b>感覺</b>: 皮節 (dermatome)相互重疊, 單一神經根 (nerve root)受損只造成<b>感覺遲鈍</b>, 不會完全缺失。</li>
+    <li><b>肌力</b>: 沒有肌肉只由一條根支配, 單根受損只造成一側<b>稍弱</b>; 但只要稍弱就可能有神經學問題。T12-L3 沒有代表性的肌肉與反射, 所以這一段<b>以感覺定位比肌力準確</b>; L4 起才有代表性的肌肉, 皮節與反射 (見查表)。</li>
+    <li>所以單根病變常是<b>痛, 麻明顯, 無力輕微</b>; 出現明確無力, 代表壓迫較重或不只一根。</li>
+    <li><b>無力不一定是神經</b>: 肌肉內膿瘍 (會痛), 手術後, 肌肉撕裂造成的反射性減弱。</li>
+    <li><b>位置</b>: 成人脊髓 (spinal cord)止於 L1-L2, 以下是馬尾 (cauda equina) (神經根); 神經根在椎弓根 (pedicle)下方出孔, 用 zone 1-3 定位。</li>
+  </ul>
+
+  <h3>重要補充: 神經根裡運動和感覺本來就分開走</h3>
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 350" role="img" aria-label="軸切面示意右半側: 前根由硬膜囊前方發出, 後根由後方發出並在神經孔內膨大為背根神經節, 兩者在孔外合成混合脊神經; 椎間盤由前方壓, SAP 與黃韌帶由後方壓">
+      <ellipse cx="250" cy="66" rx="170" ry="50" class="s-hi"/>
+      <text x="250" y="70" text-anchor="middle" class="t">椎間盤 / 椎體 (前)</text>
+      <circle cx="250" cy="172" r="42" fill="var(--bg)" stroke="var(--nerve)" stroke-width="1.5"/>
+      <text x="250" y="177" text-anchor="middle" class="t-n">硬膜囊</text>
+      <path d="M284 146 Q340 128 400 134 Q450 140 482 156" fill="none" stroke="var(--nerve)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M286 196 Q340 212 404 196" fill="none" stroke="var(--nerve)" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 4"/>
+      <ellipse cx="434" cy="188" rx="30" ry="17" fill="var(--nerve-soft)" stroke="var(--nerve)" stroke-width="2.5" stroke-dasharray="7 4"/>
+      <path d="M462 180 Q474 168 484 160" fill="none" stroke="var(--nerve)" stroke-width="4" stroke-dasharray="7 4"/>
+      <path d="M484 158 L640 150" fill="none" stroke="var(--nerve)" stroke-width="8" stroke-linecap="round"/>
+      <text x="304" y="130" class="t-n">前根: 運動</text>
+      <text x="300" y="226" class="t-n">後根: 感覺</text>
+      <text x="434" y="226" text-anchor="middle" class="t-n">DRG</text>
+      <text x="530" y="140" class="t-n">混合脊神經</text>
+      <polygon points="372,246 420,240 430,296 380,302" class="s-bone"/>
+      <text x="402" y="276" text-anchor="middle" class="t-m">SAP</text>
+      <line x1="292" y1="232" x2="360" y2="252" stroke="var(--clin)" stroke-width="8" stroke-linecap="round"/>
+      <text x="300" y="268" class="t-c">黃韌帶</text>
+      <line x1="408" y1="98" x2="408" y2="124" stroke="var(--clin)" stroke-width="2.5"/>
+      <polygon points="402,120 414,120 408,130" fill="var(--clin)"/>
+      <line x1="398" y1="238" x2="408" y2="214" stroke="var(--clin)" stroke-width="2.5"/>
+      <polygon points="402,216 414,218 410,206" fill="var(--clin)"/>
+      <line x1="300" y1="300" x2="300" y2="24" class="s-line" stroke-dasharray="3 5" opacity=".45"/>
+      <line x1="400" y1="300" x2="400" y2="24" class="s-line" stroke-dasharray="3 5" opacity=".45"/>
+      <line x1="470" y1="300" x2="470" y2="24" class="s-line" stroke-dasharray="3 5" opacity=".45"/>
+      <text x="250" y="326" text-anchor="middle" class="t-m">中央管</text>
+      <text x="350" y="326" text-anchor="middle" class="t-a">zone 1</text>
+      <text x="435" y="326" text-anchor="middle" class="t-a">zone 2</text>
+      <text x="530" y="326" text-anchor="middle" class="t-a">zone 3</text>
+      <text x="40" y="150" class="t-c">前方壓 (椎間盤, 骨刺)</text>
+      <text x="40" y="168" class="t-c">先碰前根: 無力較明顯</text>
+      <text x="40" y="270" class="t-c">後方壓 (SAP, 黃韌帶)</text>
+      <text x="40" y="288" class="t-c">先碰後根: 痛麻為主</text>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 M-1</b> 右半側軸切面示意。實線 = 運動 (前根 (ventral root)), 虛線 = 感覺 (後根 (dorsal root)與 DRG)。DRG 落在神經孔 (zone 2), 兩根在孔外 (zone 3) 才合成一條混合神經。實際上椎間盤突出 (disc herniation)常兩根一起壓, 這裡是「哪一種較突出」的傾向。</div>
+  </div>
+
+  <h3>重要補充: 用分布形狀判斷病灶在哪一層</h3>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>病灶層級</th><th>感覺</th><th>肌力</th><th>反射</th></tr></thead>
+    <tbody>
+      <tr><td>脊髓 (L1-L2 以上)</td><td>出現<b>感覺平面</b>: 以下全部異常</td><td>上運動神經元型: 無力加痙攣</td><td>亢進</td></tr>
+      <tr><td>馬尾 / 神經根 (L2 以下)</td><td><b>皮節</b>分布, 遲鈍為主; 馬尾多根受壓時馬鞍區 (saddle area)麻</td><td>下運動神經元型, <b>肌節 (myotome)</b>分布, 單根只稍弱</td><td>減弱</td></tr>
+      <tr><td>周邊神經</td><td>該<b>神經的感覺區</b> (形狀與皮節不同)</td><td>只有該神經支配的肌肉</td><td>該神經負責的反射減弱</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><b>股神經 vs L4 神經根</b> (用已讀到的表就能分): 兩者都讓股四頭肌 (quadriceps)無力。內收肌群 (adductors)由閉孔神經 (obturator nerve)支配, 同為 L2-L4。只有股神經壞時內收正常; L3 或 L4 根壞時, 股四頭肌和內收肌<b>一起</b>弱。</li>
+    <li><b>純感覺神經只會麻, 不會無力</b>: 例如 lateral femoral cutaneous nerve 受壓 (meralgia paresthetica), 大腿前外側麻, 肌力反射正常; 不要誤當成上腰椎神經根病變。</li>
+  </ul>
+
+  <div class="clin">
+    <div class="tag">判讀順序</div>
+    <ul>
+      <li>感覺: 是皮節, 神經區, 還是一個平面?</li>
+      <li>肌力: 弱的幾條肌肉, 共用的是同一根, 還是同一條周邊神經?</li>
+      <li>反射: 下降指向根或周邊神經, 亢進指向脊髓。三者交集才是病灶。</li>
+    </ul>
+  </div>
+</section>
+<section id="quiz">
+  <h2>測驗</h2>
+  <div class="score" id="score">已作答 0 / 8, 答對 0</div>
+  <div class="quiz" id="quizbox"></div>
+</section>
+<div class="src">個人學習整理。參考資料: Devlin VJ, Bergey DL. Clinically Relevant Anatomy of the Lumbar and Sacral Region. <em>Spine Secrets</em>; Hoppenfeld JD, Hoppenfeld S. <em>Orthopaedic Neurology</em>, 2nd ed. 示意圖為自行繪製。</div>
+</div>
+<script>
+const Q=[
+ {s:"單一腰神經根受損, 對應皮節最典型的感覺表現?",o:["完全感覺缺失","感覺遲鈍","感覺過敏","無任何變化"],a:1,e:"皮節相互重疊, 單根受損為 hypoesthesia, 不會 anesthesia。"},
+ {s:"T10 皮節的體表地標?",o:["乳頭線","劍突","肚臍","鼠蹊部"],a:2,e:"T4 乳頭, T7 劍突, T10 肚臍, T12 鼠蹊。"},
+ {s:"股四頭肌的神經支配?",o:["L1-L3, 閉孔神經","L2-L4, 股神經","L4-S1, 坐骨神經","[T12], L1-L3 直接分支"],a:1,e:"股四頭肌 L2-L4, 股神經; 髂腰肌才是 [T12], L1-L3 直接分支。"},
+ {s:"髂腰肌的止端是?",o:["大轉子","小轉子","髂前下棘","脛骨結節"],a:1,e:"髂腰肌止於股骨小轉子; 股四頭肌經髕下腱止於脛骨結節。"},
+ {s:"股直肌與其他三個股肌最大的不同?",o:["不附著髕骨","由閉孔神經支配","跨越髖與膝兩個關節","止於小轉子"],a:2,e:"股直肌起自髂前下棘與髖臼上方, 跨兩關節, 也能屈髖。"},
+ {s:"Extension lag 最常出現在伸膝的哪個區段?",o:["最初 10°","45° 左右","最後 10°","整個弧度平均"],a:2,e:"最後 10°-50° 需力多至少 50%, 股四頭肌無力時最後 10° 撐不住。"},
+ {s:"病人股四頭肌無力, 髖內收正常, 大腿前側與小腿內側麻。最可能的病灶?",o:["L4 神經根","股神經","閉孔神經","L5 神經根"],a:1,e:"內收肌 (閉孔神經 L2-L4) 正常, 排除 L3/L4 根; 指向股神經本身。"},
+ {s:"背根神經節 (DRG) 通常位於?",o:["硬膜囊內","Zone 1 lateral recess","Zone 2 神經孔","椎體前方"],a:2,e:"DRG 位於神經孔內, 前後根在孔外合成混合脊神經。"},
+ {s:"下列何者較支持脊髓層級病灶, 而非神經根?",o:["皮節分布的感覺遲鈍","單一肌節稍弱","感覺平面加反射亢進","膝反射減弱"],a:2,e:"脊髓病灶: 感覺平面, 上運動神經元徵象; 根病變: 皮節, 肌節, 反射減弱。"},
+ {s:"內收肌群的神經支配?",o:["股神經 L2-L4","閉孔神經 L2-L4","坐骨神經 L4-S1","腓深神經 L4"],a:1,e:"內收肌群: 閉孔神經, L2-L4。"},
+ {s:"髕腱反射臨床上主要代表哪一層?",o:["L2","L3","L4","L5"],a:2,e:"雖由 L2-L4 支配, 主要是 L4。"},
+ {s:"緊鄰鼠蹊韌帶下方的斜形皮節是?",o:["T12","L1","L2","L3"],a:1,e:"L1 在鼠蹊韌帶正下方; L2 大腿中段; L3 髕骨正上方。"},
+ {s:"評估 T12-L3 時, 哪一種測試最準確?",o:["肌力","反射","感覺","都一樣"],a:2,e:"這一段沒有代表性的肌肉與反射, 感覺測試比較準確。"},
+ {s:"脛骨前肌由哪條神經支配?",o:["脛神經","腓淺神經","腓深神經","股神經"],a:2,e:"腓深神經, 主要 L4, 也有 L5。"},
+ {s:"病人腳跟走不動, 出現跨越步態, 最可能哪條肌肉無力?",o:["股四頭肌","脛骨前肌","髂腰肌","內收長肌"],a:1,e:"脛骨前肌無力: 垂足, 跨越步態, 做不到腳跟走路。"},
+ {s:"哪一層沒有容易引出的深腱反射?",o:["L4","L5","S1","以上皆有"],a:1,e:"L5: 脛骨後肌反射難引出, 臨床上視為沒有; L4 髕腱, S1 跟腱。"},
+ {s:"病人大拇趾翹不起來, 小腿外側與足背麻, 反射正常。最可能哪一根?",o:["L4","L5","S1","S2"],a:1,e:"伸拇長肌無力 + 小腿外側足背麻 + 無反射異常 = L5。"},
+ {s:"上題最可能的椎間盤病灶?",o:["L3-4 後外側","L4-5 後外側","L5-S1 後外側","L4-5 極外側"],a:1,e:"L5 被 L4-5 後外側或 L5-S1 極外側壓; 最常見是 L4-5 後外側。"},
+ {s:"跟腱反射下降, 足外翻無力, 足外側麻, 指向?",o:["L4","L5","S1","S3"],a:2,e:"S1 三件套: 腓骨肌, 跟腱反射, 足外側。"},
+ {s:"臀中肌由哪條神經支配?",o:["臀下神經","臀上神經","坐骨神經","閉孔神經"],a:1,e:"臀中肌: 臀上神經 (L5); 臀大肌: 臀下神經 (S1)。"},
+ {s:"腓骨長短肌的功能性測試是?",o:["腳跟走路","腳尖走路","用足內側緣走路","單腳跳"],a:2,e:"腓骨肌 (外翻, S1): 用足內側緣走路; 腳跟走路測 L4/L5, 腳尖走路測腓腸肌。"}
+];
+const box=document.getElementById("quizbox"),sc=document.getElementById("score");let done=0,right=0;sc.textContent=`已作答 0 / ${Q.length}, 答對 0`;
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="qitem";
+ d.innerHTML=`<div class="stem">${i+1}. ${q.s}</div><div class="opts"></div><div class="fb" hidden></div>`;
+ const op=d.querySelector(".opts"),fb=d.querySelector(".fb");
+ q.o.forEach((t,j)=>{const b=document.createElement("button");b.type="button";b.id=`q${i}o${j}`;b.textContent=String.fromCharCode(65+j)+". "+t;
+  b.addEventListener("click",()=>{op.querySelectorAll("button").forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add("right")});
+   if(j!==q.a)b.classList.add("wrong");else right++;done++;
+   fb.hidden=false;fb.textContent=(j===q.a?"OK: ":"FAIL: ")+q.e;sc.textContent=`已作答 ${done} / ${Q.length}, 答對 ${right}`;});
+  op.appendChild(b);});
+ box.appendChild(d);});
+</script>
+</body>
+</html>

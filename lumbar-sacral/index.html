@@ -154,7 +154,7 @@ details.card[open]{border-color:#1f3a60}
   <div class="eyebrow">骨科學習筆記 / 腰椎與薦椎</div>
   <h1>腰薦椎整合筆記</h1>
   <nav>
-    <a href="../">章節目錄</a><a href="3d.html">3D 模型</a><a href="#ov">總覽</a><a href="#rt">神經根怎麼測</a><a href="#int">整合</a><a href="#quiz">測驗</a>
+    <a href="../">章節目錄</a><a href="3d.html">3D 模型</a><a href="../neuro-lower/">下肢神經機能階層</a><a href="#ov">總覽</a><a href="#nr">測哪一根</a><a href="#int">整合</a><a href="#quiz">測驗</a>
   </nav>
 </header>
 <section id="ov">
@@ -314,122 +314,54 @@ details.card[open]{border-color:#1f3a60}
   </table>
   </div>
 </section>
-<section id="rt">
-  <h2>神經根怎麼測: 皮節與各層測試</h2>
-<div class="fig" id="derm">
-    <div class="scroll">
-    <svg viewBox="0 0 680 580" role="img" aria-label="右下肢前面觀皮節圖: T12 在鼠蹊上方, L1 緊鄰鼠蹊韌帶下方, L2 大腿中段, L3 髕骨正上方, L4 小腿與足部內側, L5 小腿外側與足背, S1 足外側, S2 與 S3 在會陰">
-      <defs>
-        <clipPath id="legclip"><path d="M190 30 L400 30 L392 115 Q372 120 366 130 L336 320 Q332 340 334 360 L318 470 L322 500 Q352 518 354 548 L232 548 Q226 520 258 500 L262 470 L238 360 Q236 340 240 320 Q204 200 190 30 Z"/></clipPath>
-      </defs>
-      <g clip-path="url(#legclip)" stroke="var(--paper)" stroke-width="1.5">
-        <polygon class="db" data-d="T12" points="150,0 450,0 450,134.8 150,50.8" fill="#e8b4b4"/>
-        <polygon class="db" data-d="L1" points="150,50.8 450,134.8 450,182.8 150,98.8" fill="#f0d08a"/>
-        <polygon class="db" data-d="L2" points="150,98.8 450,182.8 450,257.8 150,173.8" fill="#e2dc78"/>
-        <polygon class="db" data-d="L3" points="150,173.8 450,257.8 450,342.8 150,258.8" fill="#c4dc7c"/>
-        <polygon class="db" data-d="L4" points="285,296.6 450,342.8 450,580 324,580 318,500 291,470" fill="#93cfa0"/>
-        <polygon class="db" data-d="L5" points="150,258.8 285,296.6 291,470 318,500 324,580 262,580 258,500 150,480" fill="#86c3c8"/>
-        <polygon class="db" data-d="S1" points="150,480 258,500 262,580 150,580" fill="#a9b8e6"/>
-      </g>
-      <path d="M190 30 L400 30 L392 115 Q372 120 366 130 L336 320 Q332 340 334 360 L318 470 L322 500 Q352 518 354 548 L232 548 Q226 520 258 500 L262 470 L238 360 Q236 340 240 320 Q204 200 190 30 Z" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <circle class="db" data-d="S2" cx="410" cy="140" r="16" fill="#c9a9e6" stroke="var(--ink)" stroke-width="1"/>
-      <line x1="196" y1="63" x2="384" y2="116" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 4"/>
-      <ellipse cx="290" cy="306" rx="17" ry="21" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <g font-size="13" font-family="var(--f-mono)" fill="var(--ink)" text-anchor="middle" pointer-events="none">
-        <text x="255" y="58">T12</text><text x="262" y="102">L1</text><text x="272" y="168">L2</text>
-        <text x="270" y="250">L3</text><text x="314" y="410">L4</text><text x="266" y="410">L5</text>
-        <text x="410" y="145">S2-3</text>
-      </g>
-      <line x1="244" y1="530" x2="150" y2="556" class="s-line" stroke-width=".8"/><text x="100" y="560" class="t">S1</text>
-      <line x1="200" y1="66" x2="110" y2="90" class="s-line" stroke-width=".8"/><text x="40" y="94" class="t">鼠蹊韌帶</text>
-      <line x1="272" y1="306" x2="150" y2="320" class="s-line" stroke-width=".8"/><text x="100" y="324" class="t">髕骨</text>
-      <text x="470" y="40" class="t-m">右下肢前面觀</text>
-      <text x="470" y="58" class="t-m">內側在右, 外側在左</text>
-      <text x="40" y="460" class="t-m">外側 (腓側)</text>
-      <text x="470" y="460" class="t-m">內側 (大拇趾側)</text>
-    </svg>
-    </div>
-    <div class="panel" id="dpanel" aria-live="polite">
-      <div class="grp" id="dg">點選皮節帶</div>
-      <h3 id="dn">L4 皮節</h3>
-      <dl>
-        <dt>位置說明</dt><dd id="dw"></dd>
-        <dt>同一根</dt><dd id="dm"></dd>
-        <dt>誰會壓到</dt><dd id="dx"></dd>
-      </dl>
-    </div>
-    <div class="cap"><b>圖 H2-4</b> 示意圖。L5, S1, S2-3 目前只標位置。</div>
-  </div>
-  <style>
-  #derm .db{cursor:pointer}
-  #derm .db:hover{opacity:.8}
-  #derm .db.sel{stroke:var(--ink);stroke-width:3}
-  </style>
-  <script>
-  (function(){
-    const D={
-      T12:{w:'鼠蹊部上方 (T12 通過鼠蹊部)。',m:'髂腰肌有少量 [T12] 支配。',x:'屬胸椎層級, 不在本章腰椎分區討論內。'},
-      L1:{w:'大腿上方前側的斜帶, 緊鄰鼠蹊韌帶下方。',m:'肌肉: 髂腰肌。反射: 無代表性。',x:'T12-L1 後外側突出, 或 L1-2 極外側突出。'},
-      L2:{w:'大腿中段前側, 夾在 L1 與 L3 之間。',m:'肌肉: 髂腰肌, 股四頭肌, 內收肌群。反射: 無代表性。',x:'L1-2 後外側突出, 或 L2-3 極外側突出。'},
-      L3:{w:'大腿前方的斜帶, 位於髕骨正上方。',m:'肌肉: 髂腰肌, 股四頭肌, 內收肌群。反射: 髕腱反射有部分 L3。',x:'L2-3 後外側突出, 或 L3-4 極外側突出。'},
-      L4:{w:'小腿內側延伸到足部內側 。',m:'肌肉: 脛骨前肌 (主要), 股四頭肌, 內收肌群。反射: 髕腱反射 (主要就是 L4)。',x:'L3-4 後外側突出, 或 L4-5 極外側突出。'},
-      L5:{w:'小腿外側與足背。',m:'脛骨前肌有部分 L5。',x:'L4-5 後外側突出, 或 L5-S1 極外側突出。'},
-      S1:{w:'足部外側緣。',m:'待補。',x:'L5-S1 後外側突出。'},
-      S2:{w:'會陰部。',m:'待補。',x:'多根同時受壓 (馬尾) 時出現馬鞍區麻。'}
-    };
-    const root=document.getElementById('derm');
-    function show(k){const d=D[k];if(!d)return;
-      document.getElementById('dg').textContent=k==='S2'?'皮節 S2-S3':'皮節 '+k;
-      document.getElementById('dn').textContent=(k==='S2'?'S2-S3':k)+' 皮節';
-      document.getElementById('dw').textContent=d.w;document.getElementById('dm').textContent=d.m;document.getElementById('dx').textContent=d.x;
-      root.querySelectorAll('.db').forEach(e=>e.classList.toggle('sel',e.dataset.d===k));}
-    root.querySelectorAll('.db').forEach(e=>e.addEventListener('click',()=>show(e.dataset.d)));
-    show('L4');
-  })();
-  </script>
+<script>
+(function(){
+const D={
+ disc:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"椎間盤 (L4-L5)",f:"承重與吸震; 外圈纖維環包住中央髓核。腰椎前凸 (lordosis) 80% 來自椎間盤楔形, 最下三個占一半。",b:"前為 ALL, 後為 PLL 與硬膜囊 (thecal sac); 後外側緊貼 lateral recess 內的 L5 走行根 (traversing root); 外側緊鄰 L4 出口根 (exiting root)。",x:"後外側突出 (最常見) 壓 L5 走行根; 極外側突出壓 L4 出口根; 中央大突出壓馬尾 (cauda equina); 退化塌陷使孔變矮並流失前凸。"},
+ all:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"前縱韌帶 ALL",f:"貼椎體與椎間盤 (intervertebral disc)前面, 寬而強, 限制過度伸展。",b:"前方是大血管, L5-S1 前方有 superior hypogastric plexus。",x:"ALIF 由前方進入時需切開 ALL; 剝離 L5-S1 前方組織可能傷及 superior hypogastric plexus。"},
+ pll:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"後縱韌帶 PLL",f:"貼椎體與椎間盤 (intervertebral disc)後面, 即椎管 (spinal canal)前壁。",b:"正後方為硬膜囊 (thecal sac); 兩側較薄處正對 lateral recess。",x:"正中最強, 把突出擠向較薄的兩側, 所以突出多為後外側 (paracentral), 壓走行根 (traversing root)。"},
+ sac:{g:"神經 / 椎管 (spinal canal)內容物",n:"硬膜囊 (thecal sac)與馬尾 (cauda equina)",f:"成人脊髓 (spinal cord)在 L1-L2 以 conus medullaris 結束, 以下硬膜囊內為馬尾: 所有腰, 薦, 尾神經根 (nerve root)。",b:"前為椎間盤 (intervertebral disc)與 PLL; 後為黃韌帶 (ligamentum flavum)與椎板 (lamina); 兩側往外即 lateral recess。",x:"前 (椎間盤) 後 (黃韌帶, facet) 夾擠 = 中央管狹窄 (central canal stenosis), 表現為神經性間歇性跛行; 大型中央突出可致馬尾症候群。"},
+ trav:{g:"神經",n:"走行根 (traversing root) (此層為 L5)",f:"在 L4 解剖節段 (anatomic segment)內往下走, 跨過 L4-5 椎間盤 (intervertebral disc), 到下一節 L5 椎弓根 (pedicle)下方才出孔。",b:"位於 lateral recess (zone 1): 前為椎間盤後外側, 後外側為 L5 的 SAP, 後內側為黃韌帶 (ligamentum flavum)。",x:"L4-5 後外側突出, SAP 肥大, 黃韌帶肥厚都在這裡壓到 L5。"},
+ exit:{g:"神經",n:"出口根 (exiting root) (此層為 L4)",f:"從 L4 椎弓根 (pedicle)正下方的神經孔 (zone 2) 出去, 再往外下走 (zone 3)。",b:"上為 L4 椎弓根, 前為椎體 (vertebral body)下半與椎間盤 (intervertebral disc), 後為 facet (L5 SAP 尖端)。",x:"L4-5 極外側突出 (zone 3) 壓 L4; 椎間盤塌陷或 SAP 往上頂使孔變窄也壓 L4。出孔後 L2-L4 穿過髂腰肌 (iliopsoas)合成股神經 (femoral nerve), 所以 L4 受壓表現為股四頭肌 (quadriceps)無力。"},
+ sap:{g:"後方元件 (posterior elements) / facet",n:"下一節的上關節突 (L5 SAP)",f:"facet 的前外側半; 與 L4 IAP 組成關節, 決定這一層能動的方向。",b:"其內下方就是 lateral recess (zone 1 的頂); 其尖端構成神經孔 (neural foramen)後壁。",x:"退化肥大最常造成 lateral recess 狹窄壓 L5 走行根 (traversing root), 尖端上頂也會讓孔變窄壓 L4 出口根 (exiting root)。"},
+ iap:{g:"後方元件 (posterior elements) / facet",n:"上一節的下關節突 (L4 IAP)",f:"facet 的後內側半。上中腰椎 facet 呈矢狀面: 可屈伸, 擋旋轉; L5-S1 呈冠狀面: 擋前滑。",b:"前外側為 L5 SAP, 內側延續為 L4 椎板 (lamina)與黃韌帶 (ligamentum flavum)。",x:"facet 關節炎 (背痛); 矢狀面方向擋不住前滑, 是 L4-5 退化性滑脫 (degenerative spondylolisthesis)的原因之一。"},
+ lf:{g:"後方 / 骨弓間連接",n:"黃韌帶 ligamentum flavum",f:"連接上下椎板 (lamina), 構成椎管 (spinal canal)後壁, 外側延續到 facet 關節囊。",b:"前方即硬膜囊 (thecal sac)與 lateral recess 內的走行根 (traversing root); 後方為椎板。",x:"肥厚與伸展時往前皺折, 造成中央管與 lateral recess 狹窄; 前彎時被拉平, 所以病人推購物車會舒服。"},
+ lamina:{g:"後方元件 (posterior elements)",n:"椎板 lamina",f:"後方元件線下三者之一, 經 pars 接到椎弓根 (pedicle), 合成骨弓保護椎管 (spinal canal)後方。",b:"前方附著黃韌帶 (ligamentum flavum); 外側接 pars 與 facet; 中線接棘突 (spinous process)。",x:"減壓手術 (laminectomy / laminotomy) 移除的對象; 外側切太多會傷 pars 或 facet。"},
+ sp:{g:"後方元件 (posterior elements) / 骨弓間連接",n:"棘突 (spinous process)與棘間, 棘上韌帶 (supraspinous ligament)",f:"肌肉槓桿與後方張力帶, 限制過度屈曲。",b:"兩棘突間為棘間韌帶 (interspinous ligament), 尖端串著棘上韌帶。",x:"手術時觸診定位層級; 後方張力帶受損 (例如 flexion-distraction 骨折) 影響穩定度。"},
+ zone:{g:"定位系統",n:"中央管與側方三區",f:"以椎弓根 (pedicle)為參考點, 由內到外定位病灶: 中央管 = 硬膜囊 (thecal sac)區; zone 1 = 椎弓根內側, SAP 下方 (lateral recess); zone 2 = 椎弓根下方 (神經孔 (neural foramen)); zone 3 = 椎弓根外側 (孔外)。",b:"zone 1 放的是走行根 (traversing root), zone 2 與 3 放的是出口根 (exiting root)。",x:"同一層的突出, 在 zone 1 壓下一號根, 在 zone 3 壓同號根。"}
+};
+const svg=document.getElementById('ovsvg');
 
-<style>
-  .tt td.ok{background:#dcefd6} .tt td.mid{background:#fbefc8} .tt td.no{background:#e6e6e6;color:#555} .tt td.tbd{background:#f4f4f4;color:#888}
-  .tt .lg{display:inline-block;width:12px;height:12px;border:1px solid #888;vertical-align:middle;margin:0 4px 0 10px}
-  </style>
-  <p class="tt" style="font-size:13px">
-    <span class="lg" style="background:#dcefd6"></span>有代表性, 可靠
-    <span class="lg" style="background:#fbefc8"></span>有, 但跨多根, 不專屬
-    <span class="lg" style="background:#e6e6e6"></span>沒有
-    <span class="lg" style="background:#f4f4f4"></span>待補
-  </p>
-  <div class="tbl tt">
-  <table>
-    <thead><tr><th>層級</th><th>肌肉</th><th>反射</th><th>感覺: 皮節 (dermatome)</th><th>靠什麼定位</th></tr></thead>
-    <tbody>
-      <tr><td><b>T12</b></td><td class="mid">髂腰肌 (iliopsoas) (少量)</td><td class="no">無</td><td class="ok">鼠蹊部</td><td>感覺</td></tr>
-      <tr><td><b>L1</b></td><td class="mid">髂腰肌</td><td class="no">無</td><td class="ok">鼠蹊韌帶 (inguinal ligament)正下方斜帶</td><td>感覺</td></tr>
-      <tr><td><b>L2</b></td><td class="mid">髂腰肌, 股四頭肌 (quadriceps), 內收肌群 (adductors)</td><td class="no">無</td><td class="ok">大腿中段前側</td><td>感覺</td></tr>
-      <tr><td><b>L3</b></td><td class="mid">髂腰肌, 股四頭肌, 內收肌群</td><td class="mid">髕腱反射 (patellar tendon reflex) (部分)</td><td class="ok">髕骨 (patella)正上方斜帶</td><td>感覺</td></tr>
-      <tr><td><b>L4</b></td><td class="ok">脛骨前肌 (tibialis anterior) (也有 L5)</td><td class="ok">髕腱反射 (主要)</td><td class="ok">小腿與足部內側</td><td>三者合看</td></tr>
-      <tr><td><b>L5</b></td><td class="tbd">待補</td><td class="tbd">待補</td><td class="tbd">小腿外側, 足背</td><td class="tbd">待補</td></tr>
-      <tr><td><b>S1</b></td><td class="tbd">待補</td><td class="tbd">待補</td><td class="tbd">足外側</td><td class="tbd">待補</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-  <h3>測法速查</h3>
+function show(k){const d=D[k];if(!d)return;pg.textContent=d.g;pn.textContent=d.n;pf.textContent=d.f;pb.textContent=d.b;px.textContent=d.x;
+ svg.querySelectorAll('.hot').forEach(h=>h.classList.toggle('sel',h.dataset.k===k));}
+svg.querySelectorAll('.hot').forEach(h=>{h.addEventListener('click',()=>show(h.dataset.k));h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(h.dataset.k)}});});
+show('disc');
+const A=document.getElementById('blobA'),B=document.getElementById('blobB'),tr=document.getElementById('ov-travR'),ex=document.getElementById('ov-exitR'),lf=document.getElementById('ov-lf');
+const sapG=svg.querySelector('[data-k="sap"]'),iapG=svg.querySelector('[data-k="iap"]'),sac=svg.querySelector('[data-k="sac"]');
+const note=document.getElementById('sc-note'),base=note.innerHTML;
+const btns=[...document.querySelectorAll('.scen button')];
+function reset(){A.hidden=B.hidden=true;[tr,ex].forEach(e=>e.classList.remove('hitc'));[tr.parentNode,ex.parentNode].forEach(()=>{});tr.style.cssText=ex.style.cssText='';lf.classList.remove('thick');[sapG,iapG,sac].forEach(g=>g.classList.remove('hit'));btns.forEach(b=>b.setAttribute('aria-pressed','false'));note.innerHTML=base;}
+const red='fill:var(--clin-soft);stroke:var(--clin);stroke-width:4';
+document.getElementById('sc-a').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');A.hidden=false;tr.style.cssText=red;note.innerHTML='<b>情境</b> L4-5 後外側突出落在 zone 1, 被 PLL 擠向一側, 直接頂到 lateral recess 內的 <b>L5 走行根</b>; L4 出口根已在外側, 不受影響。';show('trav');};
+document.getElementById('sc-b').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');B.hidden=false;ex.style.cssText=red;note.innerHTML='<b>情境</b> L4-5 極外側突出落在 zone 3 (椎弓根外側), 壓到的是已經出孔的 <b>L4 出口根</b>; MRI 若只看中央管會漏掉。';show('exit');};
+document.getElementById('sc-c').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');lf.classList.add('thick');sapG.classList.add('hit');iapG.classList.add('hit');sac.classList.add('hit');tr.style.cssText=red;note.innerHTML='<b>情境</b> 退化性狹窄: 黃韌帶肥厚加 facet 肥大由後方與後外側往內擠, 前方再加上膨出的椎間盤, 硬膜囊變成三葉形, lateral recess 內的 <b>L5 走行根</b>也一起被夾。';show('lf');};
+})();
+</script>
+<section id="nr">
+  <h2>壓到哪一根, 去測什麼</h2>
+  <p>本講義推到「哪一根被壓」為止; 怎麼在床邊測出那一根, 見<a href="../neuro-lower/">下肢神經機能階層</a>。</p>
   <div class="tbl">
   <table>
-    <thead><tr><th>測什麼</th><th>層級</th><th>怎麼測</th><th>異常時</th></tr></thead>
+    <thead><tr><th>病灶</th><th>受壓的根</th><th>肌肉</th><th>反射</th><th>感覺 (皮節 (dermatome))</th></tr></thead>
     <tbody>
-      <tr><td>髂腰肌 (髖屈曲)</td><td>[T12], L1-L3</td><td>坐檢查台邊雙腳懸空; 壓髂嵴 (iliac crest)穩定骨盆, 股骨遠端施阻力, 請病人抬大腿</td><td>一側稍弱; 會痛想到膿瘍</td></tr>
-      <tr><td>股四頭肌 (伸膝)</td><td>L2-L4</td><td>由蹲姿站起; 或一手穩定大腿, 踝上方施阻力請病人伸膝</td><td>伸展遲滯 (extension lag) (最後 10°)</td></tr>
-      <tr><td>內收肌群 (髖內收)</td><td>L2-L4</td><td>仰臥或側臥, 先外展, 雙膝內側施阻力請病人內收</td><td>一側稍弱</td></tr>
-      <tr><td>脛骨前肌 (背屈 (dorsiflexion)內翻 (inversion))</td><td>L4 (L5)</td><td>腳跟走路; 坐姿背屈內翻碰檢查者拇指, 壓第一蹠骨 (first metatarsal)往蹠屈 (plantar flexion)外翻 (eversion)</td><td>垂足 (drop foot), 跨越步態 (steppage gait)</td></tr>
-      <tr><td>髕腱反射</td><td>L4 (L2-L4)</td><td>敲髕腱</td><td>下降: L4 根</td></tr>
-      <tr><td>皮節感覺</td><td>每一層</td><td>依圖 H2-4 的帶狀區域比對</td><td>單根: 遲鈍, 不會完全缺失</td></tr>
+      <tr><td>T12-L1 到 L2-3 後外側, 或下一節極外側</td><td><b>L1-L3</b></td><td>髂腰肌 (iliopsoas), 股四頭肌 (quadriceps), 內收肌群, 都不專屬</td><td>無代表性</td><td>大腿前方斜帶, 靠感覺定位</td></tr>
+      <tr><td>L3-4 後外側, L4-5 極外側</td><td><b>L4</b></td><td>脛骨前肌 (tibialis anterior)</td><td>髕腱反射 (patellar tendon reflex)</td><td>小腿與足部內側</td></tr>
+      <tr><td>L4-5 後外側 (最常見), L5-S1 極外側</td><td><b>L5</b></td><td>伸拇長肌 (extensor hallucis longus), 臀中肌 (gluteus medius)</td><td>無容易引出的</td><td>小腿外側與足背</td></tr>
+      <tr><td>L5-S1 後外側</td><td><b>S1</b></td><td>腓骨長短肌, 腓腸肌 (gastrocnemius)-比目魚肌 (soleus)</td><td>跟腱反射 (Achilles reflex)</td><td>足部外側</td></tr>
     </tbody>
   </table>
   </div>
-  <p class="cap">L5, S1 待補。</p>
 </section>
-
 <section id="int">
   <h2>腰薦椎整合</h2>
 
@@ -550,39 +482,6 @@ details.card[open]{border-color:#1f3a60}
 <div class="src">個人學習整理。參考資料: Devlin VJ, Bergey DL. Clinically Relevant Anatomy of the Lumbar and Sacral Region. <em>Spine Secrets</em>; Hoppenfeld JD, Hoppenfeld S. <em>Orthopaedic Neurology</em>, 2nd ed. 示意圖為自行繪製。</div>
 </div>
 <script>
-(function(){
-const D={
- disc:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"椎間盤 (L4-L5)",f:"承重與吸震; 外圈纖維環包住中央髓核。腰椎前凸 (lordosis) 80% 來自椎間盤楔形, 最下三個占一半。",b:"前為 ALL, 後為 PLL 與硬膜囊 (thecal sac); 後外側緊貼 lateral recess 內的 L5 走行根 (traversing root); 外側緊鄰 L4 出口根 (exiting root)。",x:"後外側突出 (最常見) 壓 L5 走行根; 極外側突出壓 L4 出口根; 中央大突出壓馬尾 (cauda equina); 退化塌陷使孔變矮並流失前凸。",r:"Q7, Q9, Q16, Q17"},
- all:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"前縱韌帶 ALL",f:"貼椎體與椎間盤 (intervertebral disc)前面, 寬而強, 限制過度伸展。",b:"前方是大血管, L5-S1 前方有 superior hypogastric plexus。",x:"ALIF 由前方進入時需切開 ALL; 剝離 L5-S1 前方組織可能傷及 superior hypogastric plexus。",r:"Q7, Q19"},
- pll:{g:"前柱 (anterior column) / 椎體 (vertebral body)間連接",n:"後縱韌帶 PLL",f:"貼椎體與椎間盤 (intervertebral disc)後面, 即椎管 (spinal canal)前壁。",b:"正後方為硬膜囊 (thecal sac); 兩側較薄處正對 lateral recess。",x:"正中最強, 把突出擠向較薄的兩側, 所以突出多為後外側 (paracentral), 壓走行根 (traversing root)。",r:"Q7, Q16"},
- sac:{g:"神經 / 椎管 (spinal canal)內容物",n:"硬膜囊 (thecal sac)與馬尾 (cauda equina)",f:"成人脊髓 (spinal cord)在 L1-L2 以 conus medullaris 結束, 以下硬膜囊內為馬尾: 所有腰, 薦, 尾神經根 (nerve root)。",b:"前為椎間盤 (intervertebral disc)與 PLL; 後為黃韌帶 (ligamentum flavum)與椎板 (lamina); 兩側往外即 lateral recess。",x:"前 (椎間盤) 後 (黃韌帶, facet) 夾擠 = 中央管狹窄 (central canal stenosis), 表現為神經性間歇性跛行; 大型中央突出可致馬尾症候群。",r:"Q11, Q15"},
- trav:{g:"神經",n:"走行根 (traversing root) (此層為 L5)",f:"在 L4 解剖節段 (anatomic segment)內往下走, 跨過 L4-5 椎間盤 (intervertebral disc), 到下一節 L5 椎弓根 (pedicle)下方才出孔。",b:"位於 lateral recess (zone 1): 前為椎間盤後外側, 後外側為 L5 的 SAP, 後內側為黃韌帶 (ligamentum flavum)。",x:"L4-5 後外側突出, SAP 肥大, 黃韌帶肥厚都在這裡壓到 L5。",r:"Q13, Q15, Q16"},
- exit:{g:"神經",n:"出口根 (exiting root) (此層為 L4)",f:"從 L4 椎弓根 (pedicle)正下方的神經孔 (zone 2) 出去, 再往外下走 (zone 3)。",b:"上為 L4 椎弓根, 前為椎體 (vertebral body)下半與椎間盤 (intervertebral disc), 後為 facet (L5 SAP 尖端)。",x:"L4-5 極外側突出 (zone 3) 壓 L4; 椎間盤塌陷或 SAP 往上頂使孔變窄也壓 L4。出孔後 L2-L4 穿過髂腰肌 (iliopsoas)合成股神經 (femoral nerve), 所以 L4 受壓表現為股四頭肌 (quadriceps)無力。",r:"Q13, Q15, Q17, Hoppenfeld T12-L3"},
- sap:{g:"後方元件 (posterior elements) / facet",n:"下一節的上關節突 (L5 SAP)",f:"facet 的前外側半; 與 L4 IAP 組成關節, 決定這一層能動的方向。",b:"其內下方就是 lateral recess (zone 1 的頂); 其尖端構成神經孔 (neural foramen)後壁。",x:"退化肥大最常造成 lateral recess 狹窄壓 L5 走行根 (traversing root), 尖端上頂也會讓孔變窄壓 L4 出口根 (exiting root)。",r:"Q1, Q6, Q15"},
- iap:{g:"後方元件 (posterior elements) / facet",n:"上一節的下關節突 (L4 IAP)",f:"facet 的後內側半。上中腰椎 facet 呈矢狀面: 可屈伸, 擋旋轉; L5-S1 呈冠狀面: 擋前滑。",b:"前外側為 L5 SAP, 內側延續為 L4 椎板 (lamina)與黃韌帶 (ligamentum flavum)。",x:"facet 關節炎 (背痛); 矢狀面方向擋不住前滑, 是 L4-5 退化性滑脫 (degenerative spondylolisthesis)的原因之一。",r:"Q1, Q6"},
- lf:{g:"後方 / 骨弓間連接",n:"黃韌帶 ligamentum flavum",f:"連接上下椎板 (lamina), 構成椎管 (spinal canal)後壁, 外側延續到 facet 關節囊。",b:"前方即硬膜囊 (thecal sac)與 lateral recess 內的走行根 (traversing root); 後方為椎板。",x:"肥厚與伸展時往前皺折, 造成中央管與 lateral recess 狹窄; 前彎時被拉平, 所以病人推購物車會舒服。",r:"Q7, Q15"},
- lamina:{g:"後方元件 (posterior elements)",n:"椎板 lamina",f:"後方元件線下三者之一, 經 pars 接到椎弓根 (pedicle), 合成骨弓保護椎管 (spinal canal)後方。",b:"前方附著黃韌帶 (ligamentum flavum); 外側接 pars 與 facet; 中線接棘突 (spinous process)。",x:"減壓手術 (laminectomy / laminotomy) 移除的對象; 外側切太多會傷 pars 或 facet。",r:"Q1, Q2"},
- sp:{g:"後方元件 (posterior elements) / 骨弓間連接",n:"棘突 (spinous process)與棘間, 棘上韌帶 (supraspinous ligament)",f:"肌肉槓桿與後方張力帶, 限制過度屈曲。",b:"兩棘突間為棘間韌帶 (interspinous ligament), 尖端串著棘上韌帶。",x:"手術時觸診定位層級; 後方張力帶受損 (例如 flexion-distraction 骨折) 影響穩定度。",r:"Q1, Q7"},
- zone:{g:"定位系統",n:"中央管與側方三區",f:"以椎弓根 (pedicle)為參考點, 由內到外定位病灶: 中央管 = 硬膜囊 (thecal sac)區; zone 1 = 椎弓根內側, SAP 下方 (lateral recess); zone 2 = 椎弓根下方 (神經孔 (neural foramen)); zone 3 = 椎弓根外側 (孔外)。",b:"zone 1 放的是走行根 (traversing root), zone 2 與 3 放的是出口根 (exiting root)。",x:"同一層的突出, 在 zone 1 壓下一號根, 在 zone 3 壓同號根。",r:"Q15, Q16, Q17"}
-};
-const svg=document.getElementById('ovsvg');
-
-function show(k){const d=D[k];if(!d)return;pg.textContent=d.g;pn.textContent=d.n;pf.textContent=d.f;pb.textContent=d.b;px.textContent=d.x;
- svg.querySelectorAll('.hot').forEach(h=>h.classList.toggle('sel',h.dataset.k===k));}
-svg.querySelectorAll('.hot').forEach(h=>{h.addEventListener('click',()=>show(h.dataset.k));h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(h.dataset.k)}});});
-show('disc');
-const A=document.getElementById('blobA'),B=document.getElementById('blobB'),tr=document.getElementById('ov-travR'),ex=document.getElementById('ov-exitR'),lf=document.getElementById('ov-lf');
-const sapG=svg.querySelector('[data-k="sap"]'),iapG=svg.querySelector('[data-k="iap"]'),sac=svg.querySelector('[data-k="sac"]');
-const note=document.getElementById('sc-note'),base=note.innerHTML;
-const btns=[...document.querySelectorAll('.scen button')];
-function reset(){A.hidden=B.hidden=true;[tr,ex].forEach(e=>e.classList.remove('hitc'));[tr.parentNode,ex.parentNode].forEach(()=>{});tr.style.cssText=ex.style.cssText='';lf.classList.remove('thick');[sapG,iapG,sac].forEach(g=>g.classList.remove('hit'));btns.forEach(b=>b.setAttribute('aria-pressed','false'));note.innerHTML=base;}
-const red='fill:var(--clin-soft);stroke:var(--clin);stroke-width:4';
-document.getElementById('sc-a').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');A.hidden=false;tr.style.cssText=red;note.innerHTML='<b>情境</b> L4-5 後外側突出落在 zone 1, 被 PLL 擠向一側, 直接頂到 lateral recess 內的 <b>L5 走行根</b>; L4 出口根已在外側, 不受影響。';show('trav');};
-document.getElementById('sc-b').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');B.hidden=false;ex.style.cssText=red;note.innerHTML='<b>情境</b> L4-5 極外側突出落在 zone 3 (椎弓根外側), 壓到的是已經出孔的 <b>L4 出口根</b>; MRI 若只看中央管會漏掉。';show('exit');};
-document.getElementById('sc-c').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';reset();if(!on)return;e.currentTarget.setAttribute('aria-pressed','true');lf.classList.add('thick');sapG.classList.add('hit');iapG.classList.add('hit');sac.classList.add('hit');tr.style.cssText=red;note.innerHTML='<b>情境</b> 退化性狹窄: 黃韌帶肥厚加 facet 肥大由後方與後外側往內擠, 前方再加上膨出的椎間盤, 硬膜囊變成三葉形, lateral recess 內的 <b>L5 走行根</b>也一起被夾。';show('lf');};
-})();
-</script>
-<script>
 const Q=[
  {s:"下列何者位於「椎弓根下緣假想線」以下?",o:["Superior articular process","Transverse process","Lamina","Pedicle"],a:2,e:"線下三者為 lamina, IAP, SP。"},
  {s:"在 L3, 椎弓根的內側緣與下列哪一條線對齊?",o:["Pars 內側緣","Pars 外側緣","棘突中線","橫突上緣"],a:1,e:"L1-L4: 椎弓根內側緣 = pars 外側緣。"},
@@ -610,15 +509,6 @@ const Q=[
  {s:"L4-L5 極外側 (zone 3) 椎間盤突出壓到?",o:["L3","L4","L5","S1"],a:1,e:"極外側壓同號出口根 L4; 後外側才壓 L5。"},
  {s:"病人 L5 神經根症狀, 下列哪個病灶「也可能」是原因?",o:["L3-4 後外側突出","L4-5 極外側突出","L5-S1 極外側突出","L5-S1 後外側突出"],a:2,e:"L5 可被 L4-5 後外側 (zone 1) 或 L5-S1 極外側 (zone 3) 壓到; L5-S1 後外側壓 S1。"},
  {s:"前方 L5-S1 手術傷到 superior hypogastric plexus, 男性最典型的後遺症?",o:["勃起功能障礙","逆行性射精","尿失禁","足下垂"],a:1,e:"交感受損致逆行性射精, 不孕; 勃起為副交感, 不受影響。"},
- {s:"單一腰神經根受損, 對應皮節最典型的感覺表現?",o:["完全感覺缺失","感覺遲鈍","感覺過敏","無任何變化"],a:1,e:"皮節相互重疊, 單根受損為 hypoesthesia, 不會 anesthesia。"},
- {s:"T10 皮節的體表地標?",o:["乳頭線","劍突","肚臍","鼠蹊部"],a:2,e:"T4 乳頭, T7 劍突, T10 肚臍, T12 鼠蹊。"},
- {s:"股四頭肌的神經支配?",o:["L1-L3, 閉孔神經","L2-L4, 股神經","L4-S1, 坐骨神經","[T12], L1-L3 直接分支"],a:1,e:"股四頭肌 L2-L4, 股神經; 髂腰肌才是 [T12], L1-L3 直接分支。"},
- {s:"髂腰肌的止端是?",o:["大轉子","小轉子","髂前下棘","脛骨結節"],a:1,e:"髂腰肌止於股骨小轉子; 股四頭肌經髕下腱止於脛骨結節。"},
- {s:"股直肌與其他三個股肌最大的不同?",o:["不附著髕骨","由閉孔神經支配","跨越髖與膝兩個關節","止於小轉子"],a:2,e:"股直肌起自髂前下棘與髖臼上方, 跨兩關節, 也能屈髖。"},
- {s:"Extension lag 最常出現在伸膝的哪個區段?",o:["最初 10°","45° 左右","最後 10°","整個弧度平均"],a:2,e:"最後 10°-50° 需力多至少 50%, 股四頭肌無力時最後 10° 撐不住。"},
- {s:"病人股四頭肌無力, 髖內收正常, 大腿前側與小腿內側麻。最可能的病灶?",o:["L4 神經根","股神經","閉孔神經","L5 神經根"],a:1,e:"內收肌 (閉孔神經 L2-L4) 正常, 排除 L3/L4 根; 指向股神經本身。"},
- {s:"背根神經節 (DRG) 通常位於?",o:["硬膜囊內","Zone 1 lateral recess","Zone 2 神經孔","椎體前方"],a:2,e:"DRG 位於神經孔內, 前後根在孔外合成混合脊神經。"},
- {s:"下列何者較支持脊髓層級病灶, 而非神經根?",o:["皮節分布的感覺遲鈍","單一肌節稍弱","感覺平面加反射亢進","膝反射減弱"],a:2,e:"脊髓病灶: 感覺平面, 上運動神經元徵象; 根病變: 皮節, 肌節, 反射減弱。"},
  {s:"L1-L4 腰分節動脈的來源?",o:["髂腰動脈","主動脈","正中薦動脈","椎動脈"],a:1,e:"L1-L4 來自主動脈; L5 來源不固定 (髂腰, 第四腰分節, 正中薦, 或主動脈)。"},
  {s:"分節動脈的哪一支供應 facet?",o:["前支","後支","孔支","以上皆非"],a:1,e:"後支供應脊旁肌與 facet; 孔支供應椎管; 前支供應腹壁。"},
  {s:"Batson 靜脈叢使手術中腹壓上升時出血增加, 主因是?",o:["靜脈壁較薄","沒有瓣膜","直接連接主動脈","位於腹膜內"],a:1,e:"無瓣膜, 腹壓上升時血液優先流向椎管與周圍骨頭。"},
@@ -628,13 +518,7 @@ const Q=[
  {s:"下列何者「不是」以椎弓根為參考點定義的?",o:["Zone 1-3 分區","腰神經出孔位置","三層樓的 3 樓","前凸頂點位置"],a:3,e:"前凸頂點在 L3-L4 椎間盤, 與椎弓根無關; 其餘都以椎弓根定位。"},
  {s:"為什麼退化性滑脫多在 L4-L5 而不是 L5-S1?",o:["L4-L5 椎間盤最厚","L5-S1 有冠狀面 facet 與 iliolumbar 韌帶穩定","L4 椎弓根最寬","L5-S1 沒有 facet"],a:1,e:"L5-S1 facet 冠狀面擋前滑, iliolumbar 與 lumbosacral 韌帶綁住 L5。"},
  {s:"側方入路穿過 psoas 時, 最可能傷到的是?",o:["Superior hypogastric plexus","Batson 靜脈叢","腰神經叢","黃韌帶"],a:2,e:"腰神經叢走在 psoas 實質內。"},
- {s:"L4 神經根在 L3-4 層級屬於哪一種根, 位於哪一區?",o:["出口根, zone 2","走行根, zone 1","出口根, zone 3","走行根, 中央管"],a:1,e:"L4 在 L3-4 層級是走行根, 位於 lateral recess (zone 1); 到 L4 椎弓根下方才出孔。"},
- {s:"內收肌群的神經支配?",o:["股神經 L2-L4","閉孔神經 L2-L4","坐骨神經 L4-S1","腓深神經 L4"],a:1,e:"內收肌群: 閉孔神經, L2-L4。"},
- {s:"髕腱反射臨床上主要代表哪一層?",o:["L2","L3","L4","L5"],a:2,e:"雖由 L2-L4 支配, 主要是 L4。"},
- {s:"緊鄰鼠蹊韌帶下方的斜形皮節是?",o:["T12","L1","L2","L3"],a:1,e:"L1 在鼠蹊韌帶正下方; L2 大腿中段; L3 髕骨正上方。"},
- {s:"評估 T12-L3 時, 哪一種測試最準確?",o:["肌力","反射","感覺","都一樣"],a:2,e:"這一段沒有代表性的肌肉與反射, 感覺測試比較準確。"},
- {s:"脛骨前肌由哪條神經支配?",o:["脛神經","腓淺神經","腓深神經","股神經"],a:2,e:"腓深神經, 主要 L4, 也有 L5。"},
- {s:"病人腳跟走不動, 出現跨越步態, 最可能哪條肌肉無力?",o:["股四頭肌","脛骨前肌","髂腰肌","內收長肌"],a:1,e:"脛骨前肌無力: 垂足, 跨越步態, 做不到腳跟走路。"}
+ {s:"L4 神經根在 L3-4 層級屬於哪一種根, 位於哪一區?",o:["出口根, zone 2","走行根, zone 1","出口根, zone 3","走行根, 中央管"],a:1,e:"L4 在 L3-4 層級是走行根, 位於 lateral recess (zone 1); 到 L4 椎弓根下方才出孔。"}
 ];
 const box=document.getElementById("quizbox"),sc=document.getElementById("score");let done=0,right=0;sc.textContent=`已作答 0 / ${Q.length}, 答對 0`;
 Q.forEach((q,i)=>{const d=document.createElement("div");d.className="qitem";

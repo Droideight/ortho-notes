@@ -246,35 +246,35 @@ const BL={a:blob(1.0,yd45,-1.95,0.55),b:blob(3.25,yd45+0.15,-1.55,0.55),c:blob(3
 
 /* info */
 const D={
- body:{g:'骨頭 / 前柱 (anterior column)',n:'椎體 (vertebral body)',f:'承重主體。腎形, 橫徑大於前後徑; L1 到 L5 逐節變大。',x:'骨折, 骨刺 (osteophyte); 往後伸出椎弓根 (pedicle)接上後方元件 (posterior elements)。',r:'Spine Secrets Q1'},
- disc:{g:'前柱 (anterior column) / 椎體 (vertebral body)間連接',n:'椎間盤 (intervertebral disc)',f:'承重吸震。腰椎前凸 (lordosis) 80% 來自椎間盤楔形, 最下三個 (L3-4, L4-5, L5-S1) 占總前凸一半。',x:'後外側突出 (zone 1) 壓下一號走行根 (traversing root); 極外側 (zone 3) 壓同號出口根 (exiting root); 中央大突出壓馬尾 (cauda equina)。',r:'Q7, Q9, Q16-Q17'},
- pedicle:{g:'骨頭 / 後方元件 (posterior elements) (線上)',n:'椎弓根 (pedicle)',f:'連接椎體 (vertebral body)與後方元件。寬度 L1 6 mm 到 L5 18 mm, 內傾 12° 到 30° (模型照此遞增)。神經根 (nerve root)在它正下方出孔。',x:'側方狹窄 (lateral stenosis)的分區參考點; 螺絲內側破壁傷走行根 (traversing root)。',r:'Q1, Q3, Q11, Q15'},
- pars:{g:'骨頭 / 後方元件 (posterior elements)',n:'Pars interarticularis',f:'椎弓根 (pedicle)下緣假想線上, 上下兩半的交界; 連接 lamina 與上, 下關節突 (inferior articular process)。L5 的 pars 外側緣對到椎弓根中線。',x:'力量集中區, 反覆應力斷裂 = spondylolysis, 好發 L5。',r:'Q1, Q2'},
- sap:{g:'骨頭 / facet (線上)',n:'上關節突 SAP',f:'與上一節 IAP 組成 facet, 位於外前方。上中腰椎 facet 呈矢狀面 (可屈伸, 擋旋轉), L5-S1 呈冠狀面 (擋前滑)。',x:'其內下方就是 lateral recess (zone 1); 肥大壓走行根 (traversing root), 尖端上頂讓神經孔 (neural foramen)變窄。',r:'Q6, Q15'},
- iap:{g:'骨頭 / facet (線下)',n:'下關節突 IAP',f:'位於下一節 SAP 的後內側, 共組 facet 關節。',x:'facet 退化; 矢狀面方向擋不住前滑, 是 L4-5 退化性滑脫 (degenerative spondylolisthesis)的原因之一。',r:'Q6'},
- tp:{g:'骨頭 / 後方元件 (posterior elements) (線上)',n:'橫突 (transverse process)',f:'細長, 唯 L5 粗短寬厚 (模型照此), 承接 iliolumbar 與 lumbosacral ligament。也是髂腰肌 (iliopsoas)起端之一。',x:'L5 橫突與薦椎翼 (sacral ala)之間可夾到 L5 神經根 (nerve root) (補充)。',r:'Q1, Q7, Hoppenfeld T12-L3'},
- lamina:{g:'骨頭 / 後方元件 (posterior elements) (線下)',n:'椎板 (lamina)',f:'經 pars 接到椎弓根 (pedicle), 合成骨弓保護椎管 (spinal canal)後方; 前面附著黃韌帶 (ligamentum flavum)。',x:'減壓手術移除的對象; 切太外側會傷 pars 或 facet。',r:'Q1, Q7'},
- sp:{g:'骨頭 / 後方元件 (posterior elements) (線下)',n:'棘突 (spinous process)',f:'肌肉槓桿與後方張力帶; 之間為棘間韌帶 (interspinous ligament), 尖端串著棘上韌帶 (supraspinous ligament)。',x:'手術觸診定位層級。',r:'Q1, Q7'},
- sacrum:{g:'骨頭',n:'薦椎 (sacrum)',f:'五節融合; S1 椎弓根 (pedicle)為全身最大; promontory 為 S1 椎體 (vertebral body)前上緣; ala 由 S1 橫突 (transverse process)加肋骨成分融合。與骨盆合為「骨盆椎 (pelvic vertebra)」。',x:'S1 螺絲的主要錨點。',r:'Q4, Q10'},
- all:{g:'韌帶 / 椎體 (vertebral body)間',n:'前縱韌帶 ALL',f:'貼椎體與椎間盤 (intervertebral disc)前面, 寬而強。',x:'前方入路需切開; L5-S1 前方有 superior hypogastric plexus。',r:'Q7, Q19'},
- pll:{g:'韌帶 / 椎體 (vertebral body)間',n:'後縱韌帶 PLL',f:'貼椎體與椎間盤 (intervertebral disc)後面 = 椎管 (spinal canal)前壁; 正中最強, 兩側較薄 (模型畫得較窄)。',x:'把突出擠向兩側, 所以突出多為後外側, 壓走行根 (traversing root)。',r:'Q7, Q16'},
- lf:{g:'韌帶 / 骨弓間',n:'黃韌帶 (ligamentum flavum)',f:'連接上下椎板 (lamina) = 椎管 (spinal canal)後壁, 外側延續到 facet 關節囊。',x:'肥厚皺折造成中央管與 lateral recess 狹窄, 伸展時加重, 前彎緩解。',r:'Q7, Q15'},
- isl:{g:'韌帶 / 骨弓間',n:'棘間韌帶 (interspinous ligament)',f:'填在上下棘突 (spinous process)之間。',x:'後方張力帶的一部分。',r:'Q7'},
- ssl:{g:'韌帶 / 骨弓間',n:'棘上韌帶 (supraspinous ligament)',f:'沿棘突 (spinous process)尖端串成一條。',x:'後方張力帶的一部分。',r:'Q7'},
- itl:{g:'韌帶 / 骨弓間',n:'橫突間韌帶 (intertransverse ligament)',f:'連接上下橫突 (transverse process)。',x:'',r:'Q7'},
- cord:{g:'神經',n:'脊髓 (spinal cord)與 conus medullaris',f:'成人脊髓在 L1-L2 以 conus 結束 (模型照此); 以下為馬尾 (cauda equina)。',x:'L1-L2 以上病灶: 感覺平面加上運動神經元徵象 (補充)。',r:'Q11'},
- sac:{g:'神經',n:'硬膜囊 (thecal sac)與馬尾 (cauda equina)',f:'L1-L2 以下容納所有腰, 薦, 尾神經根 (nerve root); 前為椎間盤 (intervertebral disc)與 PLL, 後為黃韌帶 (ligamentum flavum)與椎板 (lamina)。',x:'前後夾擠 = 中央管狹窄 (central canal stenosis); 大型中央突出可致馬尾症候群。',r:'Q11, Q15'},
- drg:{g:'神經 (補充)',n:'背根神經節 DRG',f:'後根 (dorsal root) (感覺) 在神經孔 (zone 2) 內的膨大; 孔外與前根 (ventral root)合成混合脊神經。',x:'極外側或孔內病灶直接壓 DRG 時, 疼痛與感覺異常特別明顯。',r:'整合: 肌力 vs 感覺'},
- psoas:{g:'肌肉',n:'髂腰肌 (iliopsoas)',f:'起於腰椎椎體 (vertebral body)前側, 橫突 (transverse process), 椎間盤 (intervertebral disc)與髂窩, 止於股骨小轉子 (lesser trochanter); 髖部主要屈曲肌。[T12], L1-L3 支配。L1-L4 出口根 (exiting root)穿過它組成腰神經叢 (lumbar plexus)。',x:'膿瘍 (測試會痛); 椎間盤炎的膿可沿肌鞘下流 (補充)。',r:'Hoppenfeld T12-L3'}
+ body:{g:'骨頭 / 前柱 (anterior column)',n:'椎體 (vertebral body)',f:'承重主體。腎形, 橫徑大於前後徑; L1 到 L5 逐節變大。',x:'骨折, 骨刺 (osteophyte); 往後伸出椎弓根 (pedicle)接上後方元件 (posterior elements)。'},
+ disc:{g:'前柱 (anterior column) / 椎體 (vertebral body)間連接',n:'椎間盤 (intervertebral disc)',f:'承重吸震。腰椎前凸 (lordosis) 80% 來自椎間盤楔形, 最下三個 (L3-4, L4-5, L5-S1) 占總前凸一半。',x:'後外側突出 (zone 1) 壓下一號走行根 (traversing root); 極外側 (zone 3) 壓同號出口根 (exiting root); 中央大突出壓馬尾 (cauda equina)。'},
+ pedicle:{g:'骨頭 / 後方元件 (posterior elements) (線上)',n:'椎弓根 (pedicle)',f:'連接椎體 (vertebral body)與後方元件。寬度 L1 6 mm 到 L5 18 mm, 內傾 12° 到 30° (模型照此遞增)。神經根 (nerve root)在它正下方出孔。',x:'側方狹窄 (lateral stenosis)的分區參考點; 螺絲內側破壁傷走行根 (traversing root)。'},
+ pars:{g:'骨頭 / 後方元件 (posterior elements)',n:'Pars interarticularis',f:'椎弓根 (pedicle)下緣假想線上, 上下兩半的交界; 連接 lamina 與上, 下關節突 (inferior articular process)。L5 的 pars 外側緣對到椎弓根中線。',x:'力量集中區, 反覆應力斷裂 = spondylolysis, 好發 L5。'},
+ sap:{g:'骨頭 / facet (線上)',n:'上關節突 SAP',f:'與上一節 IAP 組成 facet, 位於外前方。上中腰椎 facet 呈矢狀面 (可屈伸, 擋旋轉), L5-S1 呈冠狀面 (擋前滑)。',x:'其內下方就是 lateral recess (zone 1); 肥大壓走行根 (traversing root), 尖端上頂讓神經孔 (neural foramen)變窄。'},
+ iap:{g:'骨頭 / facet (線下)',n:'下關節突 IAP',f:'位於下一節 SAP 的後內側, 共組 facet 關節。',x:'facet 退化; 矢狀面方向擋不住前滑, 是 L4-5 退化性滑脫 (degenerative spondylolisthesis)的原因之一。'},
+ tp:{g:'骨頭 / 後方元件 (posterior elements) (線上)',n:'橫突 (transverse process)',f:'細長, 唯 L5 粗短寬厚 (模型照此), 承接 iliolumbar 與 lumbosacral ligament。也是髂腰肌 (iliopsoas)起端之一。',x:'L5 橫突與薦椎翼 (sacral ala)之間可夾到 L5 神經根 (nerve root) (補充)。'},
+ lamina:{g:'骨頭 / 後方元件 (posterior elements) (線下)',n:'椎板 (lamina)',f:'經 pars 接到椎弓根 (pedicle), 合成骨弓保護椎管 (spinal canal)後方; 前面附著黃韌帶 (ligamentum flavum)。',x:'減壓手術移除的對象; 切太外側會傷 pars 或 facet。'},
+ sp:{g:'骨頭 / 後方元件 (posterior elements) (線下)',n:'棘突 (spinous process)',f:'肌肉槓桿與後方張力帶; 之間為棘間韌帶 (interspinous ligament), 尖端串著棘上韌帶 (supraspinous ligament)。',x:'手術觸診定位層級。'},
+ sacrum:{g:'骨頭',n:'薦椎 (sacrum)',f:'五節融合; S1 椎弓根 (pedicle)為全身最大; promontory 為 S1 椎體 (vertebral body)前上緣; ala 由 S1 橫突 (transverse process)加肋骨成分融合。與骨盆合為「骨盆椎 (pelvic vertebra)」。',x:'S1 螺絲的主要錨點。'},
+ all:{g:'韌帶 / 椎體 (vertebral body)間',n:'前縱韌帶 ALL',f:'貼椎體與椎間盤 (intervertebral disc)前面, 寬而強。',x:'前方入路需切開; L5-S1 前方有 superior hypogastric plexus。'},
+ pll:{g:'韌帶 / 椎體 (vertebral body)間',n:'後縱韌帶 PLL',f:'貼椎體與椎間盤 (intervertebral disc)後面 = 椎管 (spinal canal)前壁; 正中最強, 兩側較薄 (模型畫得較窄)。',x:'把突出擠向兩側, 所以突出多為後外側, 壓走行根 (traversing root)。'},
+ lf:{g:'韌帶 / 骨弓間',n:'黃韌帶 (ligamentum flavum)',f:'連接上下椎板 (lamina) = 椎管 (spinal canal)後壁, 外側延續到 facet 關節囊。',x:'肥厚皺折造成中央管與 lateral recess 狹窄, 伸展時加重, 前彎緩解。'},
+ isl:{g:'韌帶 / 骨弓間',n:'棘間韌帶 (interspinous ligament)',f:'填在上下棘突 (spinous process)之間。',x:'後方張力帶的一部分。'},
+ ssl:{g:'韌帶 / 骨弓間',n:'棘上韌帶 (supraspinous ligament)',f:'沿棘突 (spinous process)尖端串成一條。',x:'後方張力帶的一部分。'},
+ itl:{g:'韌帶 / 骨弓間',n:'橫突間韌帶 (intertransverse ligament)',f:'連接上下橫突 (transverse process)。',x:''},
+ cord:{g:'神經',n:'脊髓 (spinal cord)與 conus medullaris',f:'成人脊髓在 L1-L2 以 conus 結束 (模型照此); 以下為馬尾 (cauda equina)。',x:'L1-L2 以上病灶: 感覺平面加上運動神經元徵象 (補充)。'},
+ sac:{g:'神經',n:'硬膜囊 (thecal sac)與馬尾 (cauda equina)',f:'L1-L2 以下容納所有腰, 薦, 尾神經根 (nerve root); 前為椎間盤 (intervertebral disc)與 PLL, 後為黃韌帶 (ligamentum flavum)與椎板 (lamina)。',x:'前後夾擠 = 中央管狹窄 (central canal stenosis); 大型中央突出可致馬尾症候群。'},
+ drg:{g:'神經 (補充)',n:'背根神經節 DRG',f:'後根 (dorsal root) (感覺) 在神經孔 (zone 2) 內的膨大; 孔外與前根 (ventral root)合成混合脊神經。',x:'極外側或孔內病灶直接壓 DRG 時, 疼痛與感覺異常特別明顯。'},
+ psoas:{g:'肌肉',n:'髂腰肌 (iliopsoas)',f:'起於腰椎椎體 (vertebral body)前側, 橫突 (transverse process), 椎間盤 (intervertebral disc)與髂窩, 止於股骨小轉子 (lesser trochanter); 髖部主要屈曲肌。[T12], L1-L3 支配。L1-L4 出口根 (exiting root)穿過它組成腰神經叢 (lumbar plexus)。',x:'膿瘍 (測試會痛); 椎間盤炎的膿可沿肌鞘下流 (補充)。'}
 };
-const MUS={L1:'髂腰肌',L2:'髂腰肌, 股四頭肌, 內收肌群',L3:'髂腰肌, 股四頭肌, 內收肌群',L4:'脛骨前肌 (tibialis anterior, 主要), 股四頭肌, 內收肌群; 反射: 髕腱反射 (patellar tendon reflex)'};
-const DERM={L1:'鼠蹊韌帶正下方的斜帶',L2:'大腿中段前側',L3:'髕骨正上方的斜帶',L4:'小腿與足部內側',L5:'小腿外側與足背',S1:'足部外側'};
+const MUS={L1:'髂腰肌',L2:'髂腰肌, 股四頭肌, 內收肌群',L3:'髂腰肌, 股四頭肌, 內收肌群',L4:'脛骨前肌 (tibialis anterior, 主要), 股四頭肌, 內收肌群; 反射: 髕腱反射 (patellar tendon reflex)',L5:'伸拇長肌 (extensor hallucis longus), 伸趾長短肌, 臀中肌 (gluteus medius); 反射: 無容易引出的',S1:'腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌 (gluteus maximus); 反射: 跟腱反射 (Achilles reflex)'};
+const DERM={L1:'鼠蹊韌帶正下方的斜帶',L2:'大腿中段前側',L3:'髕骨正上方的斜帶',L4:'小腿與足部內側',L5:'小腿外側與足背',S1:'足部外側與部分足底'};
 function prevLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)-1];}
 function nextLv(n){const all=['T12','L1','L2','L3','L4','L5','S1','S2'];return all[all.indexOf(n)+1];}
 function rootInfo(n){const p=prevLv(n),q=nextLv(n);
   return {g:'神經根 (nerve root)',n:n+' 神經根',
    f:'在 '+p+'-'+n+' 椎間盤 (intervertebral disc)層級是走行根 (traversing root) (位於 lateral recess, zone 1); 往下在 '+n+' 椎弓根 (pedicle)正下方的 '+n+'-'+q+' 神經孔 (neural foramen)出孔, 成為出口根 (exiting root)。'+(MUS[n]?'支配: '+MUS[n]+'。':'肌肉支配: 講義尚未讀到。')+(DERM[n]?' 皮節 (dermatome): '+DERM[n]+'。':''),
-   x:p+'-'+n+' 後外側突出, 或 '+n+'-'+q+' 極外側突出, 都會壓到 '+n+'.',r:'Q13, Q16-Q18'};}
+   x:p+'-'+n+' 後外側突出, 或 '+n+'-'+q+' 極外側突出, 都會壓到 '+n+'.'};}
 const $=id=>document.getElementById(id);
 let sel=null;
 function showInfo(m){if(sel){sel.material.emissive.setHex(0x000000);}sel=m;
