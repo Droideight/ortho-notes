@@ -154,7 +154,7 @@ details.card[open]{border-color:#1f3a60}
   <div class="eyebrow">骨科學習筆記 / 骨科神經學</div>
   <h1>下肢神經機能階層</h1>
   <nav>
-    <a href="../">章節目錄</a><a href="../lumbar-sacral/">腰薦椎整合筆記</a><a href="#lv">三件套</a><a href="#dmap">皮節</a><a href="#tst">測試查表</a><a href="#ms">肌力 vs 感覺</a><a href="#quiz">測驗</a>
+    <a href="../">章節目錄</a><a href="../lumbar-sacral/">腰薦椎整合筆記</a><a href="#lv">三件套</a><a href="#dmap">皮節</a><a href="#h3">S2-S4</a><a href="#flow">檢查順序</a><a href="#tst">測試查表</a><a href="#ms">肌力 vs 感覺</a><a href="#quiz">測驗</a>
   </nav>
 </header>
 <section id="lv">
@@ -231,7 +231,7 @@ details.card[open]{border-color:#1f3a60}
       <g font-size="13" font-family="var(--f-mono)" fill="var(--ink)" text-anchor="middle" pointer-events="none">
         <text x="255" y="58">T12</text><text x="262" y="102">L1</text><text x="272" y="168">L2</text>
         <text x="270" y="250">L3</text><text x="314" y="410">L4</text><text x="266" y="410">L5</text>
-        <text x="410" y="145">S2-3</text>
+        <text x="410" y="145">S2-5</text>
       </g>
       <line x1="244" y1="530" x2="150" y2="556" class="s-line" stroke-width=".8"/><text x="100" y="560" class="t">S1</text>
       <line x1="200" y1="66" x2="110" y2="90" class="s-line" stroke-width=".8"/><text x="40" y="94" class="t">鼠蹊韌帶</text>
@@ -251,7 +251,7 @@ details.card[open]{border-color:#1f3a60}
         <dt>誰會壓到</dt><dd id="dx"></dd>
       </dl>
     </div>
-    <div class="cap"><b>圖 H2-4</b> 示意圖。小腿 L4 (內) 與 L5 (外) 以脛骨嵴 (tibial crest)為界; S1 延伸到部分足底, 前面觀看不到。</div>
+    <div class="cap"><b>圖 H2-4</b> 示意圖。小腿 L4 (內) 與 L5 (外) 以脛骨嵴 (tibial crest)為界; S1 延伸到部分足底, 前面觀看不到; S2-S5 在肛門周圍, 見圖 H2-6。</div>
   </div>
   <style>
   #derm .db{cursor:pointer}
@@ -268,12 +268,12 @@ details.card[open]{border-color:#1f3a60}
       L4:{w:'小腿內側延伸到足部內側; 和 L5 以脛骨嵴為界。',m:'肌肉: 脛骨前肌 (主要), 股四頭肌, 內收肌群。反射: 髕腱反射 (主要就是 L4)。',x:'L3-4 後外側突出, 或 L4-5 極外側突出。'},
       L5:{w:'小腿外側與足背。',m:'肌肉: 伸拇長肌, 伸趾長短肌, 臀中肌。反射: 無容易引出的反射。',x:'L4-5 後外側突出 (最常見), 或 L5-S1 極外側突出。'},
       S1:{w:'足部外側與一部分蹠側表面。',m:'肌肉: 腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌。反射: 跟腱反射。',x:'L5-S1 後外側突出。'},
-      S2:{w:'會陰部。',m:'書中尚未讀到。',x:'多根同時受壓 (馬尾) 時出現馬鞍區麻。'}
+      S2:{w:'肛門周圍三個同心圓: S2 最外圈, S3 中圈, S4-S5 最內圈 (圖 H2-6)。',m:'肌肉: 足部內在肌群 (看爪形趾), 膀胱運動。反射: 無深腱反射, 有淺肛門反射。',x:'中央大突出或中央狹窄, 多條薦根 (馬尾) 同時受壓: 馬鞍區麻。'}
     };
     const root=document.getElementById('derm');
     function show(k){const d=D[k];if(!d)return;
-      document.getElementById('dg').textContent=k==='S2'?'皮節 S2-S3':'皮節 '+k;
-      document.getElementById('dn').textContent=(k==='S2'?'S2-S3':k)+' 皮節';
+      document.getElementById('dg').textContent=k==='S2'?'皮節 S2-S5':'皮節 '+k;
+      document.getElementById('dn').textContent=(k==='S2'?'S2-S5':k)+' 皮節';
       document.getElementById('dw').textContent=d.w;document.getElementById('dm').textContent=d.m;document.getElementById('dx').textContent=d.x;
       root.querySelectorAll('.db').forEach(e=>e.classList.toggle('sel',e.dataset.d===k));}
     root.querySelectorAll('.db').forEach(e=>e.addEventListener('click',()=>show(e.dataset.d)));
@@ -281,6 +281,99 @@ details.card[open]{border-color:#1f3a60}
   })();
   </script>
 
+</section>
+
+<section id="h3">
+  <h2>S2-S4</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>運動</th><th>反射</th><th>感覺 (皮節 (dermatome))</th></tr></thead>
+    <tbody>
+      <tr><td>足部內在肌群 (intrinsic muscles of the foot) (S2, S3), 膀胱運動 (S2-S4); 沒有可個別測的肌肉</td><td>沒有深腱反射; 有<b>淺肛門反射</b> (superficial anal reflex)</td><td>肛門周圍三個同心圓</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><b>運動</b>: 足部內在肌群無法個別測, 改<b>視診有沒有爪形趾</b> (claw toes), 那可能是內在肌失去神經支配。S2-S4 也是<b>膀胱運動</b>的主要來源, 所以造成足部問題的神經病變也可能影響膀胱。</li>
+    <li><b>反射</b>: 輕觸肛門周圍皮膚, 引起肛門括約肌 (anal sphincter) (S2-S4) 收縮。</li>
+    <li><b>感覺</b>: 肛門周圍排成三個同心圓: <b>S2 最外圈, S3 中圈, S4-S5 最內圈</b>。</li>
+  </ul>
+
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 300" role="img" aria-label="S2 到 S5 皮節: 以肛門為中心的三個同心圓, S2 最外圈延伸到大腿後側上方, S3 中圈, S4-S5 最內圈">
+      <path d="M150 40 Q340 0 530 40 L560 280 L430 280 Q400 170 340 170 Q280 170 250 280 L120 280 Z" fill="var(--bone-fill)" stroke="var(--ink)" stroke-width="1.5"/>
+      <ellipse cx="340" cy="130" rx="150" ry="105" fill="#c9a9e6" stroke="var(--paper)" stroke-width="2"/>
+      <ellipse cx="340" cy="130" rx="92" ry="66" fill="#b58ad8" stroke="var(--paper)" stroke-width="2"/>
+      <circle cx="340" cy="130" r="34" fill="#d9534f" stroke="var(--paper)" stroke-width="2"/>
+      <circle cx="340" cy="130" r="6" fill="var(--ink)"/>
+      <g font-family="var(--f-mono)" font-size="13" text-anchor="middle" fill="var(--ink)">
+        <text x="340" y="48">S2</text><text x="340" y="84">S3</text><text x="340" y="118" fill="#fff">S4-S5</text>
+      </g>
+      <line x1="346" y1="134" x2="600" y2="170" class="s-line" stroke-width=".8"/><text x="560" y="186" class="t">肛門</text>
+      <text x="20" y="40" class="t-m">後面觀, 病人前彎</text>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 H2-6</b> 示意圖。三圈由外往內 = S2, S3, S4-S5; 越內圈號碼越大。</div>
+  </div>
+
+  <div class="clin">
+    <div class="tag">和脊椎接起來</div>
+    <ul>
+      <li>S2-S4 都在馬尾 (cauda equina)裡往下走。單一椎間盤側方突出只壓一根; <b>中央大突出</b>或中央狹窄才會同時壓到多條薦根, 表現為肛門周圍 (馬鞍區 (saddle area)) 麻, 肛門反射消失, 膀胱功能異常。</li>
+      <li>所以下肢神經學檢查不能停在足部: 疑似馬尾受壓時, 要查肛門周圍感覺與肛門反射。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="flow">
+  <h2>下肢神經學檢查的順序</h2>
+  <ul>
+    <li>順序: 先測<b>全部肌力</b>, 再測<b>全部感覺</b>, 最後測<b>全部反射</b>。</li>
+    <li>多數病變在足部就能測完: <b>從內側掃到外側</b>, 肌力與感覺走同一條路線。</li>
+    <li><b>雙腳同時測感覺</b>, 方便左右比較。</li>
+    <li>皮膚與它底下的肌肉, 通常由同一個神經機能階層支配: 摸到哪一帶皮節, 底下就是那一層的代表肌肉。</li>
+  </ul>
+
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 330" role="img" aria-label="右足背面觀, 由內到外三條帶: L4 足內側緣與其下的脛骨前肌腱, L5 足背與其下的伸趾長肌腱, S1 足外側緣與其下的腓骨肌; 箭頭表示由內往外掃">
+      <defs><clipPath id="footclip"><path d="M250 20 L410 20 L420 140 Q470 200 470 250 Q470 300 420 310 L250 310 Q210 300 214 250 Q218 190 250 140 Z"/></clipPath></defs>
+      <g clip-path="url(#footclip)">
+        <rect x="200" y="0" width="80" height="330" fill="#a9b8e6"/>
+        <rect x="280" y="0" width="110" height="330" fill="#86c3c8"/>
+        <rect x="390" y="0" width="90" height="330" fill="#93cfa0"/>
+      </g>
+      <path d="M250 20 L410 20 L420 140 Q470 200 470 250 Q470 300 420 310 L250 310 Q210 300 214 250 Q218 190 250 140 Z" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="400" y1="20" x2="430" y2="200" stroke="var(--clin)" stroke-width="5" stroke-linecap="round"/>
+      <line x1="330" y1="20" x2="330" y2="250" stroke="var(--clin)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="256" y1="20" x2="236" y2="210" stroke="var(--clin)" stroke-width="5" stroke-linecap="round"/>
+      <g font-family="var(--f-mono)" font-size="14" text-anchor="middle" fill="var(--ink)">
+        <text x="445" y="280">L4</text><text x="335" y="290">L5</text><text x="236" y="280">S1</text>
+      </g>
+      <text x="520" y="110" class="t-c">脛骨前肌 (L4)</text><line x1="432" y1="112" x2="515" y2="106" class="s-line" stroke-width=".8"/>
+      <text x="520" y="150" class="t-c">伸趾長, 短肌 (L5)</text><line x1="334" y1="150" x2="515" y2="146" class="s-line" stroke-width=".8"/>
+      <text x="40" y="110" class="t-c">腓骨肌群 (S1)</text><line x1="240" y1="112" x2="140" y2="106" class="s-line" stroke-width=".8"/>
+      <path d="M470 40 L200 40" stroke="var(--accent)" stroke-width="2" marker-end="url(#arr)" fill="none"/>
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
+      <text x="520" y="44" class="t-a">由內往外掃</text>
+      <text x="520" y="290" class="t-m">內側 (大拇趾側)</text><text x="40" y="290" class="t-m">外側</text>
+      <text x="40" y="30" class="t-m">右足背面觀</text>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 H2-7</b> 示意圖。色帶 = 皮節, 紅線 = 該帶底下的代表肌肉 (肌腱)。同一條路線先測肌力 (內翻, 翹趾, 外翻), 再用同一路線測感覺。</div>
+  </div>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>足部位置</th><th>層級</th><th>肌力 (底下的肌肉)</th><th>感覺 (表面皮節)</th></tr></thead>
+    <tbody>
+      <tr><td>內側</td><td><b>L4</b></td><td>脛骨前肌: 背屈加內翻</td><td>足部內側緣</td></tr>
+      <tr><td>上方 (足背)</td><td><b>L5</b></td><td>伸趾長肌, 伸趾短肌: 翹趾</td><td>足背正中</td></tr>
+      <tr><td>外側</td><td><b>S1</b></td><td>腓骨肌群: 蹠屈加外翻</td><td>足部外側</td></tr>
+    </tbody>
+  </table>
+  </div>
 </section>
 
 <section id="tst">
@@ -303,6 +396,7 @@ details.card[open]{border-color:#1f3a60}
       <tr><td><b>L2</b></td><td class="mid">髂腰肌, 股四頭肌 (quadriceps), 內收肌群 (adductors)</td><td class="no">無</td><td class="ok">大腿中段前側</td><td>感覺</td></tr>
       <tr><td><b>L3</b></td><td class="mid">髂腰肌, 股四頭肌, 內收肌群</td><td class="mid">髕腱反射 (patellar tendon reflex) (部分)</td><td class="ok">髕骨 (patella)正上方斜帶</td><td>感覺</td></tr>
       <tr><td><b>L4</b></td><td class="ok">脛骨前肌 (tibialis anterior) (也有 L5)</td><td class="ok">髕腱反射 (主要)</td><td class="ok">小腿與足部內側</td><td>三者合看</td></tr>
+      <tr><td><b>S2-S4</b></td><td class="no">足內在肌, 膀胱; 無法個別測 (看爪形趾)</td><td class="mid">無深腱反射; 淺肛門反射</td><td class="ok">肛門周圍同心圓</td><td>感覺 + 肛門反射</td></tr>
       <tr><td><b>L5</b></td><td class="ok">伸拇長肌, 伸趾長短肌, 臀中肌</td><td class="no">無 (脛骨後肌反射難引出)</td><td class="ok">小腿外側, 足背</td><td>肌力 + 感覺</td></tr>
       <tr><td><b>S1</b></td><td class="ok">腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌</td><td class="ok">跟腱反射</td><td class="ok">足外側, 部分足底</td><td>三者合看</td></tr>
     </tbody>
@@ -325,11 +419,13 @@ details.card[open]{border-color:#1f3a60}
       <tr><td>臀大肌 (gluteus maximus) (髖伸展)</td><td>S1</td><td>俯臥, 膝屈曲, 抬大腿離台對抗阻力</td><td>一側稍弱</td></tr>
       <tr><td>髕腱反射</td><td>L4 (L2-L4)</td><td>敲髕腱</td><td>下降: L4 根</td></tr>
       <tr><td>跟腱反射 (Achilles reflex)</td><td>S1</td><td>坐姿輕微背屈足部, 敲跟腱 (Achilles tendon)</td><td>下降: S1 根</td></tr>
-      <tr><td>皮節感覺</td><td>每一層</td><td>依圖 H2-4 的帶狀區域比對</td><td>單根: 遲鈍, 不會完全缺失</td></tr>
+      <tr><td>肛門反射 (淺反射)</td><td>S2-S4</td><td>輕觸肛門周圍皮膚</td><td>括約肌不收縮: 馬尾受壓</td></tr>
+      <tr><td>足內在肌 (視診)</td><td>S2, S3</td><td>看有無爪形趾</td><td>爪形趾</td></tr>
+      <tr><td>皮節感覺</td><td>每一層</td><td>依圖 H2-4, H2-6 比對; 足部由內往外掃, 雙腳同時</td><td>單根: 遲鈍, 不會完全缺失</td></tr>
     </tbody>
   </table>
   </div>
-  <p class="cap">L4, L5, S1 剛好從足部內側排到外側: 內翻 (L4), 翹趾 (L5), 外翻 (S1)。</p>
+  <p class="cap">L4, L5, S1 剛好從足部內側排到外側: 內翻 (L4), 翹趾 (L5), 外翻 (S1)。檢查順序: 全部肌力, 全部感覺, 全部反射。</p>
 </section>
 
 <section id="ms">
@@ -439,7 +535,12 @@ const Q=[
  {s:"上題最可能的椎間盤病灶?",o:["L3-4 後外側","L4-5 後外側","L5-S1 後外側","L4-5 極外側"],a:1,e:"L5 被 L4-5 後外側或 L5-S1 極外側壓; 最常見是 L4-5 後外側。"},
  {s:"跟腱反射下降, 足外翻無力, 足外側麻, 指向?",o:["L4","L5","S1","S3"],a:2,e:"S1 三件套: 腓骨肌, 跟腱反射, 足外側。"},
  {s:"臀中肌由哪條神經支配?",o:["臀下神經","臀上神經","坐骨神經","閉孔神經"],a:1,e:"臀中肌: 臀上神經 (L5); 臀大肌: 臀下神經 (S1)。"},
- {s:"腓骨長短肌的功能性測試是?",o:["腳跟走路","腳尖走路","用足內側緣走路","單腳跳"],a:2,e:"腓骨肌 (外翻, S1): 用足內側緣走路; 腳跟走路測 L4/L5, 腳尖走路測腓腸肌。"}
+ {s:"腓骨長短肌的功能性測試是?",o:["腳跟走路","腳尖走路","用足內側緣走路","單腳跳"],a:2,e:"腓骨肌 (外翻, S1): 用足內側緣走路; 腳跟走路測 L4/L5, 腳尖走路測腓腸肌。"},
+ {s:"肛門周圍皮節的最外圈是?",o:["S1","S2","S3","S4-S5"],a:1,e:"S2 最外圈, S3 中圈, S4-S5 最內圈。"},
+ {s:"S2-S4 可以測的反射是?",o:["跟腱反射","脛骨後肌反射","淺肛門反射","髕腱反射"],a:2,e:"S2-S4 沒有深腱反射; 輕觸肛門周圍引起括約肌收縮。"},
+ {s:"足部內在肌群 (S2, S3) 失去神經支配, 視診可見?",o:["垂足","爪形趾","扁平足","高弓足"],a:1,e:"內在肌無法個別測, 改看有無爪形趾。"},
+ {s:"書中建議的下肢神經學檢查順序?",o:["反射, 感覺, 肌力","感覺, 肌力, 反射","肌力, 感覺, 反射","依病灶決定"],a:2,e:"先全部肌力, 再全部感覺, 最後全部反射。"},
+ {s:"病人肛門周圍麻, 肛門反射消失, 最該想到?",o:["L5-S1 極外側突出","單一 S1 根受壓","馬尾受壓 (中央大突出)","腓總神經麻痺"],a:2,e:"多條薦根同時受壓才會出現; 單一側方突出只壓一根。"}
 ];
 const box=document.getElementById("quizbox"),sc=document.getElementById("score");let done=0,right=0;sc.textContent=`已作答 0 / ${Q.length}, 答對 0`;
 Q.forEach((q,i)=>{const d=document.createElement("div");d.className="qitem";
