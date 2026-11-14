@@ -154,7 +154,7 @@ details.card[open]{border-color:#1f3a60}
   <div class="eyebrow">骨科學習筆記 / 骨科神經學</div>
   <h1>下肢神經機能階層</h1>
   <nav>
-    <a href="../">章節目錄</a><a href="../lumbar-sacral/">腰薦椎整合筆記</a><a href="#lv">三件套</a><a href="#dmap">皮節</a><a href="#h3">S2-S4</a><a href="#flow">檢查順序</a><a href="#tst">測試查表</a><a href="#ms">肌力 vs 感覺</a><a href="#quiz">測驗</a>
+    <a href="../">章節目錄</a><a href="../lumbar-sacral/">腰薦椎整合筆記</a><a href="#lv">三件套</a><a href="#dmap">皮節</a><a href="#h3">S2-S4</a><a href="#flow">檢查順序</a><a href="#h4">椎間盤突出</a><a href="#h5">解離與滑脫</a><a href="#tst">測試查表</a><a href="#ms">肌力 vs 感覺</a><a href="#quiz">測驗</a>
   </nav>
 </header>
 <section id="lv">
@@ -417,7 +417,7 @@ details.card[open]{border-color:#1f3a60}
       L4:{w:'小腿內側延伸到足部內側; 和 L5 以脛骨嵴為界。',m:'肌肉: 脛骨前肌 (主要), 股四頭肌, 內收肌群。反射: 髕腱反射 (主要就是 L4)。',x:'L3-4 後外側突出, 或 L4-5 極外側突出。'},
       L5:{w:'小腿外側與足背。',m:'肌肉: 伸拇長肌, 伸趾長短肌, 臀中肌。反射: 無容易引出的反射。',x:'L4-5 後外側突出 (最常見), 或 L5-S1 極外側突出。'},
       S1:{w:'足部外側與一部分蹠側表面。',m:'肌肉: 腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌。反射: 跟腱反射。',x:'L5-S1 後外側突出。'},
-      S2:{w:'肛門周圍三個同心圓: S2 最外圈, S3 中圈, S4-S5 最內圈 (圖 H2-6)。',m:'肌肉: 足部內在肌群 (看爪形趾), 膀胱運動。反射: 無深腱反射, 有淺肛門反射。',x:'中央大突出或中央狹窄, 多條薦根 (馬尾) 同時受壓: 馬鞍區麻。'}
+      S2:{w:'S2: 大腿後側的縱向長條帶; S2-S5 在肛門周圍排成同心圓: S2 最外圈, S3 中圈, S4-S5 最內圈 (圖 H2-6)。',m:'肌肉: 足部內在肌群 (看爪形趾), 膀胱運動。反射: 無深腱反射, 有淺肛門反射。',x:'中央大突出或中央狹窄, 多條薦根 (馬尾) 同時受壓: 馬鞍區麻。'}
     };
     const root=document.getElementById('derm');
     function show(k){const d=D[k];if(!d)return;
@@ -525,6 +525,138 @@ details.card[open]{border-color:#1f3a60}
   </div>
 </section>
 
+<section id="h4">
+  <h2>臨床應用: 腰椎椎間盤突出</h2>
+
+  <h3>一、突出往哪裡, 壓到誰</h3>
+  <ul>
+    <li>腰椎椎間盤 (intervertebral disc) 多往<b>後方</b>突出而不是前方, 多往<b>側邊</b> (後外側) 而不是正中; 原因就是後縱韌帶 (posterior longitudinal ligament) 正中最強。</li>
+    <li>每一層有兩條神經根 (nerve root) 經過, 一個突出通常<b>只壓其中一條</b>, 所以疼痛多轉傳到<b>單側腿</b>, 很少兩腿同時。</li>
+    <li>神經根出孔前<b>繞著椎弓根 (pedicle) 轉約 45°</b>。椎弓根位在椎體上 1/3, 所以根緊貼椎弓根轉出去, <b>不會經過下一個椎間盤</b>。</li>
+    <li>結果: 突出壓的是<b>正要往下一節出孔的那條根</b> (走行根 (traversing root))。L5 根跨過 L4-5 椎間盤, 在 L5 椎弓根處轉彎, 在 L5-S1 椎間盤之前就出孔; 所以 L4-5 突出壓 L5, L5-S1 突出壓不到 L5。</li>
+    <li>反推: L5 支配區有症狀, 突出多在 <b>L5 椎體的上一個椎間盤</b> (L4-5)。</li>
+  </ul>
+
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 400" role="img" aria-label="後面觀冠狀示意: L4, L5 椎體與 S1, 椎弓根位於椎體上三分之一; L5 根在硬膜囊外側往下, 跨過 L4-5 椎間盤, 繞 L5 椎弓根下方轉出, 不經過 L5-S1 椎間盤; L4-5 後外側突出壓到 L5 根, L5-S1 後外側突出壓到 S1 根">
+      <rect x="250" y="30" width="180" height="100" rx="8" class="s-bone"/><text x="340" y="86" text-anchor="middle" class="t-h">L4</text>
+      <rect x="254" y="134" width="172" height="26" rx="5" class="s-hi"/><text x="340" y="152" text-anchor="middle" class="t">L4-5 椎間盤</text>
+      <rect x="250" y="164" width="180" height="100" rx="8" class="s-bone"/><text x="340" y="226" text-anchor="middle" class="t-h">L5</text>
+      <rect x="254" y="268" width="172" height="26" rx="5" class="s-hi"/><text x="340" y="286" text-anchor="middle" class="t">L5-S1 椎間盤</text>
+      <rect x="250" y="298" width="180" height="80" rx="8" class="s-bone"/><text x="340" y="350" text-anchor="middle" class="t-h">S1</text>
+      <ellipse cx="440" cy="52" rx="20" ry="16" class="s-ped"/><ellipse cx="440" cy="186" rx="20" ry="16" class="s-ped"/><ellipse cx="440" cy="320" rx="20" ry="16" class="s-ped"/>
+      <rect x="300" y="20" width="80" height="370" fill="none" stroke="var(--nerve)" stroke-width="1.2" stroke-dasharray="6 4"/>
+      <path d="M392 20 L392 66 Q400 80 470 92" fill="none" stroke="var(--nerve)" stroke-width="4"/>
+      <path d="M402 20 L404 150 Q408 196 476 212" fill="none" stroke="var(--clin)" stroke-width="5"/>
+      <path d="M412 20 L414 284 Q420 330 476 346" fill="none" stroke="var(--nerve)" stroke-width="4"/>
+      <ellipse cx="404" cy="146" rx="16" ry="11" class="blob" fill="var(--clin)" opacity=".85"/>
+      <ellipse cx="416" cy="281" rx="14" ry="10" fill="var(--clin)" opacity=".45"/>
+      <g class="t-n"><text x="478" y="96">L4 根 (L4 椎弓根下出孔)</text><text x="482" y="216">L5 根</text><text x="482" y="350">S1 根</text></g>
+      <line x1="388" y1="146" x2="190" y2="120" class="s-line" stroke-width=".8"/><text x="20" y="114" class="t-c">L4-5 後外側突出</text><text x="20" y="132" class="t-c">→ 壓 L5 (正在跨過的根)</text>
+      <line x1="402" y1="282" x2="190" y2="290" class="s-line" stroke-width=".8"/><text x="20" y="286" class="t-c">L5-S1 後外側突出</text><text x="20" y="304" class="t-c">→ 壓 S1, 碰不到 L5</text>
+      <text x="460" y="174" class="t-m">椎弓根 (椎體上 1/3)</text>
+      <text x="306" y="16" class="t-m">硬膜囊 (虛線)</text>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 H2-8</b> 後面觀, 只畫右側神經根。根貼著椎弓根轉出, 出孔時已經在下一個椎間盤上方; 這就是「後外側突出壓下一號根」的解剖原因。</div>
+  </div>
+
+  <h3>二、三條根的總表</h3>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>神經根</th><th>椎間盤</th><th>肌肉</th><th>反射</th><th>感覺</th><th>肌電圖 (EMG)</th></tr></thead>
+    <tbody>
+      <tr><td><b>L4</b></td><td>L3-4</td><td>脛骨前肌</td><td>髕腱</td><td>小腿內側</td><td>脛骨前肌出現顫動電位 (fibrillation) 或尖銳波 (sharp wave)</td></tr>
+      <tr><td><b>L5</b></td><td>L4-5</td><td>伸拇長肌 (另: 伸趾長短肌, 內側膕旁肌 (medial hamstrings), 臀中肌)</td><td>無 (脛骨後肌)</td><td>小腿外側與足背</td><td>伸拇長肌同上</td></tr>
+      <tr><td><b>S1</b></td><td>L5-S1</td><td>腓骨長短肌 (另: 腓腸肌, 外側膕旁肌 (lateral hamstrings), 臀大肌, 屈拇長肌 (flexor hallucis longus))</td><td>跟腱</td><td>足部外側</td><td>腓骨長短肌同上</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">另有一欄「脊髓造影 (myelography): 該椎間盤附近的脊髓膨出」, 現在多由 MRI 取代。</p>
+  <ul>
+    <li>補兩點: <b>L3 運動 = 股四頭肌</b> (L2-L4); <b>S2 感覺 = 大腿後側的縱向長條帶</b>。</li>
+    <li>反射可以坐著一次做完: 髕下腱 (infrapatellar tendon) L4, 跟腱 S1。</li>
+  </ul>
+
+  <h3>三、為什麼臨床上不一定這麼清楚</h3>
+  <ul>
+    <li>一條根可能<b>混有相鄰根的成分</b>: L4 根也可能含 L3 或 L5。</li>
+    <li>一個突出也可能<b>同時壓兩條根</b>, 尤其 L4-5 的<b>正中突出</b>: 可同時壓 L5 與 S1。</li>
+    <li>多節同時突出, 會出現不典型的神經學異常。</li>
+    <li>L4-5 與 L5-S1 是腰椎<b>活動度最大</b>的兩節, 受損機會也最高: 兩節合占腰椎椎間盤突出的 <b>90%</b>。</li>
+  </ul>
+
+  <h3>四、單純下背痛 vs 椎間盤突出</h3>
+  <ul>
+    <li><b>下背功能障礙</b> (low back derangement): 搬重物, 跌倒, 車禍扭轉後背痛, 下腰椎壓痛, 痛可放射到後上髂棘 (posterior superior iliac spine) 附近, 再往腿後側傳。</li>
+    <li>分辨方法就是本章的<b>神經機能階層檢查</b>: 有沒有客觀的肌力, 反射, 感覺改變。</li>
+    <li><b>每次看診都要重做</b>: 初診時缺損可能還不明顯, 之後可能惡化, 也可能進步 (治療效果)。</li>
+    <li>除非反射, 感覺, 肌力有改變, 或肌電圖陽性, 否則就算病人要求換治療, 仍應繼續<b>保守治療</b> (物理治療, 注射, 藥物)。</li>
+    <li>椎間盤突出常只有一兩個徵候, 要收集夠多資料才能定位; 肌電圖與 MRI 可以幫忙, 但多數情況靠身體檢查就能做出正確診斷。</li>
+  </ul>
+
+  <div class="clin">
+    <div class="tag">和脊椎接起來</div>
+    <ul>
+      <li>「壓下一號根」(本節) 與「極外側突出壓同號根」 是同一個解剖的兩面: 根在 zone 1 時是走行根, 出孔後 (zone 2, 3) 才是出口根。</li>
+      <li>哪一節最常見, 說法不一: 有的資料寫 L5-S1 最常見。<b>重要補充</b>: 現代資料多認為 L4-5 與 L5-S1 大致相當 (L4-5 略多); 記「這兩節占九成」就夠。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="h5">
+  <h2>臨床應用: 脊椎解離與滑脫</h2>
+  <ul>
+    <li><b>脊椎解離</b> (spondylolysis): 關節間部 (pars interarticularis) 斷開。pars 位在上關節突 (superior articular process) 與下關節突 (inferior articular process) 之間, 精確說是<b>下關節突靠近椎弓根的地方</b>。原因未明, 通常認為是反覆應力造成的疲勞骨折。</li>
+    <li><b>脊椎滑脫</b> (spondylolisthesis): 病變的椎體往前滑, 落在下一節椎體上。</li>
+    <li><b>好發</b>: L5 最多, 其次 L4。是<b>十幾歲青少年</b>背痛的常見原因, 特別在運動後痛。</li>
+    <li>X 光斜位片: 蘇格蘭犬戴項圈。</li>
+  </ul>
+
+  <h3>一、分級: 上一節往前滑多少</h3>
+  <div class="fig">
+    <div class="scroll">
+    <svg viewBox="0 0 680 260" role="img" aria-label="滑脫分級: 下一節椎體上緣由後往前分成四等分; 上一節後緣往前移 25% 以內為第一級, 25 到 50% 為第二級, 50 到 75% 為第三級, 超過 75% 為第四級">
+      <defs><marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
+      <rect x="200" y="150" width="360" height="66" rx="6" class="s-bone"/>
+      <rect x="70" y="72" width="360" height="72" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <g stroke="var(--clin)" stroke-width="1.5" stroke-dasharray="4 3"><line x1="290" y1="60" x2="290" y2="226"/><line x1="380" y1="60" x2="380" y2="226"/><line x1="470" y1="60" x2="470" y2="226"/></g>
+      <line x1="430" y1="60" x2="430" y2="148" stroke="var(--accent)" stroke-width="3"/>
+      <g text-anchor="middle" font-size="12" class="t-c"><text x="515" y="242">第一級</text><text x="425" y="242">第二級</text><text x="335" y="242">第三級</text><text x="245" y="242">第四級</text></g>
+      <g text-anchor="middle" class="t-m"><text x="515" y="256">0-25%</text><text x="425" y="256">25-50%</text><text x="335" y="256">50-75%</text><text x="245" y="256">&gt;75%</text></g>
+      <path d="M190 40 L60 40" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar5)"/><text x="70" y="30" class="t-a">往前 (腹側)</text>
+      <text x="250" y="114" text-anchor="middle" class="t">上一節 (例: L5)</text>
+      <text x="380" y="190" text-anchor="middle" class="t">下一節 (例: S1)</text>
+      <text x="440" y="54" class="t-a">上一節後緣落在第二格 = 第二級</text>
+      <text x="570" y="190" class="t-m">後</text>
+    </svg>
+    </div>
+    <div class="cap"><b>圖 H2-9</b> 側面示意, 前方在左。以下一節椎體上緣前後長度為 100%, 由後往前分四格, 看上一節的後緣 (藍粗線) 往前移到哪一格。分級名稱 Meyerding 為書外補充。</div>
+  </div>
+  <ul>
+    <li><b>疼痛程度與分級不一定相關</b>: 第一級可能比第四級還痛, 第四級可能完全不痛。</li>
+  </ul>
+
+  <h3>二、神經症狀從哪裡來</h3>
+  <ul>
+    <li><b>L5-S1 滑脫</b>最常見, 會牽扯 L5 與 S1 神經根; L5 支配<b>內側膕旁肌</b>, S1 支配<b>外側膕旁肌</b>, 所以常見<b>膕旁肌痙攣</b> (hamstrings 緊)。</li>
+    <li>單純滑脫時, <b>感覺與反射通常正常</b>, 除非合併椎間盤突出。</li>
+    <li>症狀<b>突然加劇</b>, 常是<b>合併椎間盤突出</b>; 滑脫病人發生突出的機會比一般人高。</li>
+    <li>突出的位置通常比骨病變<b>高一節</b>: L5 解離時, 突出最可能在 <b>L4-5</b>。</li>
+    <li>L5 根受累的表現: <b>直腿抬高測試 (straight leg raising) 陽性</b>, 伸趾肌群無力, 足背感覺變差。通常來自合併的突出, 但滑脫本身也可能直接夾住神經根。</li>
+  </ul>
+
+  <div class="clin">
+    <div class="tag">和脊椎接起來</div>
+    <ul>
+      <li>pars 斷了, 椎體與上關節突跟著往前滑, 後方元件 (椎板, 下關節突) 留在原位; 神經孔被拉扁, 夾到在孔內出口的根 (L5-S1 滑脫 → L5)。</li>
+      <li>L5-S1 facet 偏冠狀面, 本來擋前滑; 所以這一層的滑脫幾乎都要先有 pars 斷裂 (isthmic 型)。</li>
+      <li>舊的說法認為 pars 完整的退化性滑脫極少見。<b>重要補充</b>: 現代認為退化性滑脫在中老年人很常見, 好發 L4-5, 以這個為準。</li>
+    </ul>
+  </div>
+</section>
+
 <section id="tst">
   <h2>測試查表</h2>
 <style>
@@ -543,9 +675,9 @@ details.card[open]{border-color:#1f3a60}
       <tr><td><b>T12</b></td><td class="mid">髂腰肌 (iliopsoas) (少量)</td><td class="no">無</td><td class="ok">鼠蹊部</td><td>感覺</td></tr>
       <tr><td><b>L1</b></td><td class="mid">髂腰肌</td><td class="no">無</td><td class="ok">鼠蹊韌帶 (inguinal ligament)正下方斜帶</td><td>感覺</td></tr>
       <tr><td><b>L2</b></td><td class="mid">髂腰肌, 股四頭肌 (quadriceps), 內收肌群 (adductors)</td><td class="no">無</td><td class="ok">大腿中段前側</td><td>感覺</td></tr>
-      <tr><td><b>L3</b></td><td class="mid">髂腰肌, 股四頭肌, 內收肌群</td><td class="mid">髕腱反射 (patellar tendon reflex) (部分)</td><td class="ok">髕骨 (patella)正上方斜帶</td><td>感覺</td></tr>
+      <tr><td><b>L3</b></td><td class="mid">髂腰肌, 股四頭肌 (常列為 L3 代表), 內收肌群</td><td class="mid">髕腱反射 (patellar tendon reflex) (部分)</td><td class="ok">髕骨 (patella)正上方斜帶</td><td>感覺</td></tr>
       <tr><td><b>L4</b></td><td class="ok">脛骨前肌 (tibialis anterior) (也有 L5)</td><td class="ok">髕腱反射 (主要)</td><td class="ok">小腿與足部內側</td><td>三者合看</td></tr>
-      <tr><td><b>S2-S4</b></td><td class="no">足內在肌, 膀胱; 無法個別測 (看爪形趾)</td><td class="mid">無深腱反射; 淺肛門反射</td><td class="ok">肛門周圍同心圓</td><td>感覺 + 肛門反射</td></tr>
+      <tr><td><b>S2-S4</b></td><td class="no">足內在肌, 膀胱; 無法個別測 (看爪形趾)</td><td class="mid">無深腱反射; 淺肛門反射</td><td class="ok">S2 大腿後側縱帶; 肛門周圍同心圓</td><td>感覺 + 肛門反射</td></tr>
       <tr><td><b>L5</b></td><td class="ok">伸拇長肌, 伸趾長短肌, 臀中肌</td><td class="no">無 (脛骨後肌反射難引出)</td><td class="ok">小腿外側, 足背</td><td>肌力 + 感覺</td></tr>
       <tr><td><b>S1</b></td><td class="ok">腓骨長短肌, 腓腸肌-比目魚肌, 臀大肌</td><td class="ok">跟腱反射</td><td class="ok">足外側, 部分足底</td><td>三者合看</td></tr>
     </tbody>
@@ -689,7 +821,14 @@ const Q=[
  {s:"S2-S4 可以測的反射是?",o:["跟腱反射","脛骨後肌反射","淺肛門反射","髕腱反射"],a:2,e:"S2-S4 沒有深腱反射; 輕觸肛門周圍引起括約肌收縮。"},
  {s:"足部內在肌群 (S2, S3) 失去神經支配, 視診可見?",o:["垂足","爪形趾","扁平足","高弓足"],a:1,e:"內在肌無法個別測, 改看有無爪形趾。"},
  {s:"書中建議的下肢神經學檢查順序?",o:["反射, 感覺, 肌力","感覺, 肌力, 反射","肌力, 感覺, 反射","依病灶決定"],a:2,e:"先全部肌力, 再全部感覺, 最後全部反射。"},
- {s:"病人肛門周圍麻, 肛門反射消失, 最該想到?",o:["L5-S1 極外側突出","單一 S1 根受壓","馬尾受壓 (中央大突出)","腓總神經麻痺"],a:2,e:"多條薦根同時受壓才會出現; 單一側方突出只壓一根。"}
+ {s:"病人肛門周圍麻, 肛門反射消失, 最該想到?",o:["L5-S1 極外側突出","單一 S1 根受壓","馬尾受壓 (中央大突出)","腓總神經麻痺"],a:2,e:"多條薦根同時受壓才會出現; 單一側方突出只壓一根。"},
+ {s:"L5 支配區出現症狀, 突出最可能在?",o:["L5-S1","L4-5","L3-4","S1-S2"],a:1,e:"根在椎弓根處轉出, 不經過下一個椎間盤; L5 被 L4-5 突出壓到。"},
+ {s:"腰椎椎間盤突出約九成發生在?",o:["L1-2 與 L2-3","L3-4 與 L4-5","L4-5 與 L5-S1","T12-L1 與 L5-S1"],a:2,e:"這兩節活動度最大。"},
+ {s:"S2 的感覺皮節除了肛門周圍外圈, 還有?",o:["足底","大腿後側縱向長條帶","小腿外側","鼠蹊部"],a:1,e:"S2 = 大腿後側之縱向長條狀區域。"},
+ {s:"下背痛病人何時不該只因病人要求就換掉保守治療?",o:["只要痛就換","沒有客觀神經缺損或肌電圖陽性時","MRI 看到膨出時","超過兩週時"],a:1,e:"除非反射, 感覺, 肌力改變或 EMG 陽性, 否則繼續保守治療。"},
+ {s:"滑脫 40% 屬於第幾級?",o:["一","二","三","四"],a:1,e:"25-50% 為第二級。"},
+ {s:"L5 脊椎解離病人症狀突然加劇, 最可能合併?",o:["L5-S1 突出","L4-5 突出","L3-4 突出","骶髂關節炎"],a:1,e:"突出通常比骨病變高一節。"},
+ {s:"L5-S1 滑脫常見的體檢發現?",o:["跟腱反射消失","膕旁肌痙攣","股四頭肌無力","肛門反射消失"],a:1,e:"L5 支配內側, S1 支配外側膕旁肌; 單純滑脫感覺與反射多正常。"}
 ];
 const box=document.getElementById("quizbox"),sc=document.getElementById("score");let done=0,right=0;sc.textContent=`已作答 0 / ${Q.length}, 答對 0`;
 Q.forEach((q,i)=>{const d=document.createElement("div");d.className="qitem";
